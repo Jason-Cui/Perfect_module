@@ -64,7 +64,7 @@ class qdodoo_car_bill_lading(models.Model):
         for line in self.order_line:
             if not line.product_num:
                 raise osv.except_osv(_(u'警告'),_(u'请输入车架号！'))
-            line.information_id.write({'product_num':line.product_num,'bill_id':self.id})
+            line.information_id.write({'product_num':line.product_num,'bill_id':self.id,'real_price':line.real_price})
         return self.write({'state':'done'})
 
     # 取消
@@ -119,5 +119,6 @@ class qdodoo_car_bill_lading_line(models.Model):
     information_id = fields.Many2one('qdodoo.car.information',u'车辆档案id')
     product_id = fields.Many2one('product.product',u'车辆型号')
     product_num = fields.Char(u'车架号')
+    real_price = fields.Float(u'实际车价')
     price_unit = fields.Float(u'销售合同价格')
     box_num = fields.Char(u'箱号')

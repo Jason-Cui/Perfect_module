@@ -113,7 +113,7 @@ class qdodoo_car_issuing_manager(models.Model):
             # 创建对应的收款明细
             # 获取外贸合同对应的车辆档案
             for line in self.order_line:
-                information_ids = information_obj.search([('purchase_id','=',self.purchase_id.id),('product_id','=',line.product_id.id)])
+                information_ids = information_obj.search([('issuing_money','=',line.price_unit),('purchase_id','=',self.purchase_id.id),('product_id','=',line.product_id.id)])
                 for information_id in information_ids:
                     line_obj.create({'order_id':payment_id.id,'product_num':information_id.id,'money':line.price_unit*self.issuing_payment_rate/100*self.issuing_pay_rate})
         result = self.env['ir.model.data'].get_object_reference( 'qdodoo_car_import_trade', 'tree_qdodoo_car_payment_order')

@@ -396,7 +396,7 @@ class qdodoo_car_purchase_bill_line(models.TransientModel):
             purchas_id = purchase_obj.browse(order_id)
             res_id = bill_obj.create({'purchase_id':purchas_id.id,'in_port':purchas_id.out_port.id,'out_port':purchas_id.in_port.id})
             for line in self.line:
-                bill_line_obj.create({'information_id':line.id,'bill_id':res_id.id,'product_id':line.product_id.id,'product_num':line.product_num,'price_unit':line.price_unit})
+                bill_line_obj.create({'information_id':line.id,'bill_id':res_id.id,'product_id':line.product_id.id,'product_num':line.product_num,'price_unit':line.price_unit,'real_price':line.price_unit})
         else:
             # 查询已有的提单
             res_id = bill_obj.search([('purchase_id','=',order_id)])

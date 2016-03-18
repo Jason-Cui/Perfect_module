@@ -24,7 +24,6 @@
                                 <field name="issuing_id"/>
                                 <field name="issuing_money"/>
                                 <field name="currency_id"/>
-                                <field name="buy_exchange_rate"/>
                                 <field name="bill_id"/>
                                 <field name="source_location"/>
                                 <field name="dest_location"/>
@@ -96,9 +95,9 @@
                 <tree string="开票金额明细" create="false" edit="false">
                     <field name="product_id"/>
                     <field name="product_num"/>
-                    <field name="issuing_money"/>
+                    <field name="real_price"/>
                     <field name="currency_id"/>
-                    <field name="buy_exchange_rate"/>
+                    <field name="negotiation_sale_exchange_rate" string="购汇汇率"/>
                     <field name="purchase_price"/>
                     <field name="inspection_price"/>
                     <field name="in_tax"/>

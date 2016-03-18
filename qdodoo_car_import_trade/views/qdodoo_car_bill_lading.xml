@@ -39,21 +39,13 @@
 
                             </group>
                         </group>
-                        <group>
-                            <group>
-                                <field name='import_file' attrs="{'readonly':[('state','!=','draft')]}"/>
-                            </group>
-                            <group>
-                                <button name='import_data' string='导入' type='object' states="draft" />
-                                <a href="/qdodoo_car_import_trade/static/car_number.xls">点此进行模板下载</a>
-                            </group>
-                        </group>
                         <label string="货物明细"/>
                         <field name="order_line" attrs="{'readonly':[('state','!=','draft')]}">
                             <tree string="货物明细" create="false" editable="bottom">
                                 <field name="product_id" readonly="True"/>
                                 <field name="product_num"/>
                                 <field name="box_num"/>
+                                <field name="real_price"/>
                                 <field name="price_unit" readonly="True"/>
                             </tree>
                         </field>
