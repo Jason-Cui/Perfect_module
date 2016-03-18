@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="form_qdodoo_car_stock" model="ir.ui.view">
+            <field name="name">qdodoo.car.stock.form</field>
+            <field name="model">qdodoo.car.stock</field>
+            <field name="arch" type="xml">
+                <form string="到港">
+                    <header>
+                        <button name="btn_done" string="转移" states='draft' type="object" class="oe_highlight"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,done" statusbar_colors='{"except_picking":"red","except_invoice":"red","confirm_contract":"red"}' readonly="1"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="in_port_date" required="True"/>
+                            </group>
+                            <group>
+                                <field name="port_id" required="True"/>
+                            </group>
+                        </group>
+                        <field name="order_line">
+                            <tree editable="bottom">
+                                <field name="product_num" domain="[('in_ship','=',False)]" required="True"/>
+                                <field name="product_id" readonly="True"/>
+                            </tree>
+                        </field>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="tree_qdodoo_car_stock" model="ir.ui.view">
+            <field name="name">qdodoo.car.stock.tree</field>
+            <field name="model">qdodoo.car.stock</field>
+            <field name="arch" type="xml">
+                <tree string="到港">
+                    <field name="in_port_date"/>
+                    <field name="port_id"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+        <record id="action_qdodoo_car_stock" model="ir.actions.act_window">
+            <field name="name">到港</field>
+            <field name="res_model">qdodoo.car.stock</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('in_port_date','!=',False)]</field>
+            <field name="context">{'view_id':'qdodoo_stock_location_qddg'}</field>
+        </record>
+        <record id="action_qdodoo_car_stock_tree" model="ir.actions.act_window.view">
+            <field name="view_mode">tree</field>
+            <field name="sequence">1</field>
+            <field name="view_id" ref="tree_qdodoo_car_stock"/>
+            <field name="act_window_id" ref="action_qdodoo_car_stock"/>
+        </record>
+        <record id="action_qdodoo_car_stock_form" model="ir.actions.act_window.view">
+            <field name="view_mode">form</field>
+            <field name="sequence">2</field>
+            <field name="view_id" ref="form_qdodoo_car_stock"/>
+            <field name="act_window_id" ref="action_qdodoo_car_stock"/>
+        </record>
+        <menuitem name="到港" action="action_qdodoo_car_stock" id="menu_qdodoo_car_stock" parent="menu_qdodoo_stock_manager" sequence="1"/>
+
+        <record id="form_qdodoo_car_stock_box" model="ir.ui.view">
+            <field name="name">qdodoo.car.stock.form</field>
+            <field name="model">qdodoo.car.stock</field>
+            <field name="arch" type="xml">
+                <form string="拆箱">
+                    <header>
+                        <button name="btn_done" string="转移" states='draft' type="object" class="oe_highlight"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,done" statusbar_colors='{"except_picking":"red","except_invoice":"red","confirm_contract":"red"}' readonly="1"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="box_date" required="True"/>
+                            </group>
+                            <group>
+                                <field name="port_id" required="True"/>
+                            </group>
+                        </group>
+                        <field name="order_line">
+                            <tree editable="bottom">
+                                <field name="product_num" domain="[('in_ship','!=',False),('open_box','=',False)]" required="True"/>
+                                <field name="product_id" readonly="True"/>
+                            </tree>
+                        </field>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="tree_qdodoo_car_stock_box" model="ir.ui.view">
+            <field name="name">qdodoo.car.stock.tree</field>
+            <field name="model">qdodoo.car.stock</field>
+            <field name="arch" type="xml">
+                <tree string="拆箱">
+                    <field name="box_date"/>
+                    <field name="port_id"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+        <record id="action_qdodoo_car_stock_box" model="ir.actions.act_window">
+            <field name="name">拆箱</field>
+            <field name="res_model">qdodoo.car.stock</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('box_date','!=',False)]</field>
+            <field name="context">{'view_id':'qdodoo_stock_location_qdcx'}</field>
+        </record>
+        <record id="action_qdodoo_car_stock_box_tree" model="ir.actions.act_window.view">
+            <field name="view_mode">tree</field>
+            <field name="sequence">1</field>
+            <field name="view_id" ref="tree_qdodoo_car_stock_box"/>
+            <field name="act_window_id" ref="action_qdodoo_car_stock_box"/>
+        </record>
+        <record id="action_qdodoo_car_stock_box_form" model="ir.actions.act_window.view">
+            <field name="view_mode">form</field>
+            <field name="sequence">2</field>
+            <field name="view_id" ref="form_qdodoo_car_stock_box"/>
+            <field name="act_window_id" ref="action_qdodoo_car_stock_box"/>
+        </record>
+        <menuitem name="拆箱" action="action_qdodoo_car_stock_box" id="menu_qdodoo_car_stock_box" parent="menu_qdodoo_stock_manager" sequence="2"/>
+
+        <record id="form_qdodoo_car_stock_in_stock" model="ir.ui.view">
+            <field name="name">qdodoo.car.stock.form</field>
+            <field name="model">qdodoo.car.stock</field>
+            <field name="arch" type="xml">
+                <form string="入库">
+                    <header>
+                        <button name="btn_done" string="转移" states='draft' type="object" class="oe_highlight"/>
+                        <button name="btn_expense_in" string="费用录入" states='done' type="object" class="oe_highlight"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,done" statusbar_colors='{"except_picking":"red","except_invoice":"red","confirm_contract":"red"}' readonly="1"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="in_stock_date" required="True"/>
+                            </group>
+                            <group>
+                                <field name="port_id" required="True"/>
+                            </group>
+                        </group>
+                        <field name="order_line">
+                            <tree editable="bottom">
+                                <field name="product_num" domain="[('open_box','!=',False),('in_stock','=',False)]" required="True"/>
+                                <field name="product_id" readonly="True"/>
+                            </tree>
+                        </field>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="tree_qdodoo_car_stock_in_stock" model="ir.ui.view">
+            <field name="name">qdodoo.car.stock.tree</field>
+            <field name="model">qdodoo.car.stock</field>
+            <field name="arch" type="xml">
+                <tree string="入库">
+                    <field name="in_stock_date"/>
+                    <field name="port_id"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+        <record id="action_qdodoo_car_stock_in_stock" model="ir.actions.act_window">
+            <field name="name">入库</field>
+            <field name="res_model">qdodoo.car.stock</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('in_stock_date','!=',False)]</field>
+            <field name="context">{'view_id':'qdodoo_stock_location_qd'}</field>
+        </record>
+        <record id="action_qdodoo_car_stock_in_stock_tree" model="ir.actions.act_window.view">
+            <field name="view_mode">tree</field>
+            <field name="sequence">1</field>
+            <field name="view_id" ref="tree_qdodoo_car_stock_in_stock"/>
+            <field name="act_window_id" ref="action_qdodoo_car_stock_in_stock"/>
+        </record>
+        <record id="action_qdodoo_car_stock_in_stock_form" model="ir.actions.act_window.view">
+            <field name="view_mode">form</field>
+            <field name="sequence">2</field>
+            <field name="view_id" ref="form_qdodoo_car_stock_in_stock"/>
+            <field name="act_window_id" ref="action_qdodoo_car_stock_in_stock"/>
+        </record>
+        <menuitem name="入库" action="action_qdodoo_car_stock_in_stock" id="menu_qdodoo_car_stock_in_stock" parent="menu_qdodoo_stock_manager" sequence="3"/>
+
+        <record id="form_qdodoo_car_stock_out_stock" model="ir.ui.view">
+            <field name="name">qdodoo.car.stock.form</field>
+            <field name="model">qdodoo.car.stock</field>
+            <field name="arch" type="xml">
+                <form string="出库">
+                    <header>
+                        <button name="btn_done" string="转移" states='draft' type="object" class="oe_highlight"/>
+                        <button name="btn_expense_in" string="费用录入" states='done' type="object" class="oe_highlight"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,done" statusbar_colors='{"except_picking":"red","except_invoice":"red","confirm_contract":"red"}' readonly="1"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="out_stock_date" required="True"/>
+                            </group>
+                        </group>
+                        <field name="order_line">
+                            <tree editable="bottom">
+                                <field name="product_num" domain="[('in_stock','!=',False),('out_stock','=',False)]" required="True"/>
+                                <field name="product_id" readonly="True"/>
+                            </tree>
+                        </field>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="tree_qdodoo_car_stock_out_stock" model="ir.ui.view">
+            <field name="name">qdodoo.car.stock.tree</field>
+            <field name="model">qdodoo.car.stock</field>
+            <field name="arch" type="xml">
+                <tree string="出库">
+                    <field name="out_stock_date"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+        <record id="action_qdodoo_car_stock_out_stock" model="ir.actions.act_window">
+            <field name="name">出库</field>
+            <field name="res_model">qdodoo.car.stock</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('out_stock_date','!=',False)]</field>
+        </record>
+        <record id="action_qdodoo_car_stock_out_stock_tree" model="ir.actions.act_window.view">
+            <field name="view_mode">tree</field>
+            <field name="sequence">1</field>
+            <field name="view_id" ref="tree_qdodoo_car_stock_out_stock"/>
+            <field name="act_window_id" ref="action_qdodoo_car_stock_out_stock"/>
+        </record>
+        <record id="action_qdodoo_car_stock_out_stock_form" model="ir.actions.act_window.view">
+            <field name="view_mode">form</field>
+            <field name="sequence">2</field>
+            <field name="view_id" ref="form_qdodoo_car_stock_out_stock"/>
+            <field name="act_window_id" ref="action_qdodoo_car_stock_out_stock"/>
+        </record>
+        <menuitem name="出库" action="action_qdodoo_car_stock_out_stock" id="menu_qdodoo_car_stock_out_stock" parent="menu_qdodoo_stock_manager" sequence="4"/>
+
+        <record id="form_qdodoo_car_stock_move" model="ir.ui.view">
+            <field name="name">qdodoo.car.stock.form</field>
+            <field name="model">qdodoo.car.stock</field>
+            <field name="arch" type="xml">
+                <form string="调拨">
+                    <header>
+                        <button name="btn_done" string="转移" states='draft' type="object" class="oe_highlight"/>
+                        <button name="btn_expense_in" string="费用录入" states='done' type="object" class="oe_highlight"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,done" statusbar_colors='{"except_picking":"red","except_invoice":"red","confirm_contract":"red"}' readonly="1"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="source_id" required="True"/>
+                            </group>
+                            <group>
+                                <field name="port_id" string="目的库位" required="True"/>
+                                <field name="move_date" required="True"/>
+                            </group>
+                        </group>
+                        <field name="order_line">
+                            <tree editable="bottom">
+                                <field name="product_num" domain="[('dest_location','=',parent.source_id)]" required="True"/>
+                                <field name="product_id" readonly="True"/>
+                            </tree>
+                        </field>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="tree_qdodoo_car_stock_move" model="ir.ui.view">
+            <field name="name">qdodoo.car.stock.tree</field>
+            <field name="model">qdodoo.car.stock</field>
+            <field name="arch" type="xml">
+                <tree string="调拨">
+                    <field name="move_date"/>
+                    <field name="source_id"/>
+                    <field name="port_id" string="目的库位"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+        <record id="action_qdodoo_car_stock_move" model="ir.actions.act_window">
+            <field name="name">调拨</field>
+            <field name="res_model">qdodoo.car.stock</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('move_date','!=',False)]</field>
+        </record>
+        <record id="action_qdodoo_car_stock_move_tree" model="ir.actions.act_window.view">
+            <field name="view_mode">tree</field>
+            <field name="sequence">1</field>
+            <field name="view_id" ref="tree_qdodoo_car_stock_move"/>
+            <field name="act_window_id" ref="action_qdodoo_car_stock_move"/>
+        </record>
+        <record id="action_qdodoo_car_stock_move_form" model="ir.actions.act_window.view">
+            <field name="view_mode">form</field>
+            <field name="sequence">2</field>
+            <field name="view_id" ref="form_qdodoo_car_stock_move"/>
+            <field name="act_window_id" ref="action_qdodoo_car_stock_move"/>
+        </record>
+        <menuitem name="调拨" action="action_qdodoo_car_stock_move" id="menu_qdodoo_car_stock_move" parent="menu_qdodoo_stock_manager" sequence="5"/>
+
+    </data>
+</openerp>

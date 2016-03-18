@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="form_qdodoo_car_carry_money" model="ir.ui.view">
+            <field name="name">qdodoo.car.carry.money.form</field>
+            <field name="model">qdodoo.car.carry.money</field>
+            <field name="arch" type="xml">
+                <form string="提车款">
+                    <header>
+                        <button name="btn_doing" string="确认" states='draft' type="object" class="oe_highlight"/>
+                        <button name="btn_cancel" string="取消" states='draft' type="object" class="oe_highlight" confirm="你确认取消该订单吗?"/>
+                        <button name="btn_payment" string="收款通知" states='doing' type="object" class="oe_highlight"/>
+                        <button name="btn_draft" string="驳回" states='doing' type="object" class="oe_highlight"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,doing,done" statusbar_colors='{"except_picking":"red","except_invoice":"red","confirm_contract":"red"}' readonly="1"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <label string="提车款"/>
+                                <field name="name" class="oe_inline" readonly="1"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="partner_id"/>
+                            </group>
+                            <group>
+                                <field name="car_number"/>
+                            </group>
+                        </group>
+                        <field name="order_line">
+                            <tree editable="bottom">
+                                <field name="product_num" domain="[('partner_id','=',parent.partner_id)]"/>
+                                <field name="product_id" readonly="True"/>
+                                <!--<field name="purchase_id" readonly="True"/>-->
+                                <field name="sale_price" readonly="True"/>
+                                <field name="in_tax" readonly="True"/>
+                                <field name="in_sale_tax" readonly="True"/>
+                                <field name="add_tax" readonly="True"/>
+                                <field name="pad_interest" readonly="True"/>
+                                <field name="negotiation_sale_interest" readonly="True"/>
+                                <field name="clearance_money" readonly="True"/>
+                                <field name="all_issure" readonly="True"/>
+                                <!--<field name="bank_money" readonly="True"/>-->
+                                <field name="logistics_money" readonly="True"/>
+                                <field name="delayed_moeny" readonly="True"/>
+                                <field name="in_issuing_money" readonly="True"/>
+                                <field name="invoice_issuing_money" readonly="True"/>
+                                <field name="other_issuing_money" readonly="True"/>
+                                <field name="subtitle" readonly="True"/>
+                                <field name="estimate_money"/>
+                            </tree>
+                        </field>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="tree_qdodoo_car_carry_money" model="ir.ui.view">
+            <field name="name">qdodoo.car.carry.money.pledge.tree</field>
+            <field name="model">qdodoo.car.carry.money</field>
+            <field name="arch" type="xml">
+                <tree string="提车款">
+                    <field name="name"/>
+                    <field name="partner_id"/>
+                    <field name="car_number"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+        <record id="action_qdodoo_car_carry_money" model="ir.actions.act_window">
+            <field name="name">提车款</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">qdodoo.car.carry.money</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="tree_qdodoo_car_carry_money"/>
+        </record>
+        <menuitem name="提车款" action="action_qdodoo_car_carry_money" id="menu_qdodoo_car_carry_money" parent="menu_qdodoo_sale_manager" sequence="5"/>
+
+    </data>
+</openerp>

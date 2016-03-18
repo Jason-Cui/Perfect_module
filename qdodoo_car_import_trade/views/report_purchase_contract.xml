@@ -1,0 +1,518 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+<template id="report_purchase_contract_document">
+    <!--<t t-call="report.external_layout">-->
+    <t>
+        <div class="page">
+            <div class="oe_structure"/>
+            <div class="row">
+                <div class="text-center">
+                    <h1><strong>SALES &amp; PURCHASE CONTRACT OF VEHICLE</strong></h1>
+                    <h1><strong>汽车买卖合同</strong></h1>
+                </div>
+                <div>
+                    <p>Contract No.（合同编号）:<span t-esc="o.contract_num"/></p>
+                    <p>Date（日期）		  :<span t-esc="o.date_order"/></p>
+                    <p>THE SELLER:</p>
+                    <p>COMPANY :<span t-esc="o.partner_id.name"/></p>
+                    <p>ADDRESS:<span t-esc="o.partner_id.city"/><span t-esc="o.partner_id.street2"/><span t-esc="o.partner_id.street"/></p>
+                    <p>TEL:<span t-esc="o.partner_id.phone"/></p>
+                    <p>Representative:_________________</p>
+                    <p>Hereinafter referred to as the “SELLER”.</p>
+                    <br/>
+                    <p>以下被称为卖方。</p>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <p>THE BUYER:</p>
+                    <p>COMPANY: SHANDONG HIGH-SPEED QINGDAO WEST COAST PORT CO.,LTD
+                        山东高速青岛西海岸港口有限公司</p>
+                    <p>ADDRESS:No. Room 1707,Phoenix Plaza,No.161,Changjiang West Road,Qingdao Economic and Technological Development Zone
+                        青岛市经济开发区长江西路161号凤凰广场17楼1707室</p>
+                    <p>TEL: <span t-esc="o.partner_id.company_id.phone"/></p>
+                    <p>FAX: <span t-esc="o.partner_id.company_id.fax"/></p>
+                    <p>Representative: Mr. ZHANG</p>
+                    <p>Hereinafter referred to as the “BUYER”.</p>
+                    <p>以下被称为买方。</p>
+                    <p>This contract is made by and between the Buyer and the seller, whereby the Buyer agrees to buy and the Seller agrees to sell the under mentioned goods on the terms and conditions stated below:</p>
+                    <p>此汽车买卖合同由买卖双方同意签定，即买方同意购买，卖方同意出售下列之货品，双方同意并遵守以下条款:</p>
+                    <p>1   COMMODITY商品</p>
+                    <p>Name of the Commodity:</p>
+                    <p>商品名称:</p>
+                    <p>Model：</p>
+                    <p>型号：</p>
+                    <p>Country of Origin:</p>
+                    <p>原产地：</p>
+                    <p>Loading Port :<span t-esc="o.out_port.name"/> </p>
+                    <p>装货港口：<span t-esc="o.out_port.name"/></p>
+                    <p>Discharge Port ：<span t-esc="o.in_port.name"/></p>
+                    <p>Discharge Port ：<span t-esc="o.in_port.name"/></p>
+                    <p>Packing: container</p>
+                    <p>包装: 集装箱</p>
+                    <p>2   DELIVERY PERIOD , EQUIPMENT AND QUANTITY 交货期、配置及数量</p>
+                    <p>Shipment  ：</p>
+                    <p>数量： </p>
+                    <p>Exterior: </p>
+                    <p>外观颜色： </p>
+                    <p>Transshipment allowed</p>
+                    <p>允许转船</p>
+                    <p>Partial shipment  allowed</p>
+                    <p>允许分批装运</p>
+                    <p>Shipment:<span t-esc="o.date_ship"/></p>
+                    <p>最晚装船时间<span t-esc="o.date_ship"/></p>
+                    <p>Shipments in  container vessel.</p>
+                    <p>集装箱船载运.</p>
+                    <p>Basic parameters (standard / optional): 基本参数配置（标准/选用）</p>
+                </div>
+                <table class="table table-condensed">
+                    <thead>
+                        <tr>
+                            <th class="text-center"><strong>The technical specification技术规范</strong></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div><p>3   PRICE价格</p></div>
+                <table class="table table-condensed">
+                    <thead>
+                        <tr>
+                            <th class="text-center"><strong>DESCRIPTION</strong></th>
+                            <th class="text-right"><strong>QTY</strong></th>
+                            <th class="text-right"><strong>UNIT PRICE<span t-esc="o.currency_id.name"/></strong></th>
+                            <th class="text-right"><strong>TOTAL PRICE<span t-esc="o.currency_id.name"/></strong></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr t-foreach="o.order_line" t-as="order_line">
+                            <td>
+                                <span t-field="order_line.product_id.name"/>
+                            </td>
+                            <td class="text-right">
+                                <span t-field="order_line.product_qty"/>
+                            </td>
+                            <td class="text-right">
+                                <span t-field="order_line.price_unit"/>
+                            </td>
+                            <td class="text-right">
+                                <span t-field="order_line.all_money"/>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="row">
+                    <div class="col-xs-4 pull-right">
+                        <table class="table table-condensed">
+                            <tr class="border-black">
+                                <td><strong>合计：</strong></td>
+                                <td class="text-right">
+                                    <span t-field="o.amount_total"/>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div>
+                    <p><span>4    PACKINGREQUIREMENT包装要求</span></p>
+                    <br/>
+                    <p><span>In case of goods damage caused by poor packaging or improper protective measures, the Seller shall compensate for all the losses incurred.</span></p>
+                    <p><span>由于包装不良而引起的货物损伤或由于防护措施不当而引起货物损伤，卖方应赔偿由此而造成的全部损失费用。</span></p>
+                    <p><span>5   PAYMENT TERMS付款条款</span></p>
+                    <p>5.1 TERMS OF PAYMENT:<span t-esc="o.payment_type.name"/> </p>
+                    <p><span>100%by irrevocable L/C at sight</span></p>
+                    <p><span>100%不可撤销即期信用证</span></p>
+                    <p><span>5.2  Additional terms in Letter of Credit  信用证附加条款</span></p>
+                    <p><span>1. The l/c should be within 21 days after the latest shipment time effectively</span></p>
+                    <p>信用证自最晚装船日后21天内有效。</p>
+                    <p>    2. Partial shipment is  allowed.</p>
+                    <p>允许分批装运。</p>
+                    <p>    3. Documents to be presented within 15 days from the B/L date.</p>
+                    <p>自提单日起15天内提交单据。</p>
+                    <p>5.3	All bank charges inside the issuing bank will be borne by the applicant. All bank charges outside the issuing bank will be borne by the beneficiary. Amendment fees if any, caused by the applicant, will be on the applicants account; caused by the beneficiary, will be on the beneficiary account.</p>
+                    <p>开证行内银行费用由开证申请方承担,开证行外的银行费用由受益人承担。改证发生的费用由相关责任方承担</p>
+                    <p>6   DOCUMENTS REQUIRED FOR PAYMENT 付款交单议付文件</p>
+                    <p>Payment shall be made against the following documents:</p>
+                    <p>买方银行须根据以下议付条文付款:</p>
+                    <p>a)  signed commercial invoice in 3originals indicating L/C No., Contract No. and Vin No. B/L No. , Container number, name of carrying  vessel, Under each unit price.</p>
+                    <p>已签署的商业发票3份原件，写明信用证号码、合同号、车辆识别码、提单号、集装箱号码，运输船名称，每个单价下面。</p>
+                    <p>b)   Full set of clean on board ocean bill of landing made out to Order and blank endorsed, marked freight prepaid, notifying Applicant, showing Vin No., container No., Name and Tel No. Of  Shipping agent at destination.</p>
+                    <p>全套海运清洁装运提单，空白背书，注明运费预付，通知申请人，显示车辆识别码，集装箱号，目的地港货代的姓名和电话号码。</p>
+                    <p>c)   packing list in 3 originals indicating quantity/gross And net weights.</p>
+                    <p>装箱单3份原件，写明数量、毛/ 净重。</p>
+                    <p>d )  Seller’s certificate certifying that they have faxed or emailed a set of non-Negotiable copy documents, including commercial invoice, B/L, packing list to buyer within 3 days after B/L date.</p>
+                    <p>卖方应在提单日后3日内以传真或电子邮件方式发送一套非议付复印件文件给买方，该套非议付文件包含已签署的商业发票、提单、装箱单。</p>
+                    <p>7	SHIPPING AND DELIVERY REQUIREMENT交货条款</p>
+                    <p>7.1  The Buyer is entitled to assign its representatives to monitor the entire shipping process at the loading port and the related cost shall be borne by the Buyer. The Seller shall offer assistance as much as possible so that the Buyer representatives can normally carry out their duties of monitoring shipping.</p>
+                    <p>买方有权指派其代表在装运港进行监督整个装运过程，费用由买方承担，卖方将提供尽可能多的协助，以便买方代表可以正常履行其监装职务。</p>
+                    <p>8   RESPONSIBILITY 责任</p>
+                    <p>8.1  Seller’s Liability卖方责任</p>
+                    <p>8.1.1  The Seller shall load the goods on to the specified ship at the specified port within the shipping period or prior to the latest shipping date stipulated in the Contract, and shall give the Buyer sufficient notice.</p>
+                    <p>在合同规定的装运港和装运日期或期间内，将货物装上指定的船只，并给予买方充分的通知。</p>
+                    <p>8.1.2  The seller shall, before the goods are loaded for shipment, provide the buyer with the VIN No. of all goods for review.</p>
+                    <p>货物在装船前，卖方需要提供全部货物的车架号给买方查询。</p>
+                    <p>8.1.3   Seller shall bear all expenses and risks before the goods pass the ship's rail at the named port of shipment.</p>
+                    <p>负担货物在装运港越过船舷前的一切费用和风险。</p>
+                    <p>8.1.4   The Seller shall handle export formalities, obtaining the export license as well as other official approval documents and dealing with all the customs formalities necessary for the goods export.</p>
+                    <p>办理出口手续，取得出口许可证或其他官方批准文件，并办理货物出口所必需的一切海关手续。</p>
+                    <p>8.1.5   The Seller shall provide shipping documents, commercial invoices and other documents stipulated in the contract.</p>
+                    <p>负责提供清洁已装船单据、商业发票以及其他合同规定的单据。</p>
+                    <p>8.1.6  The Seller shall ensure that the goods are new, never used and consistent with the stipulations of the contract in quality, specifications and performance.</p>
+                    <p>卖方保证货物崭新，未曾使用，并在各方面与合同规定的质量、规格和性能相一致。</p>
+                    <p>8.1.7   Seller shall guarantee that the goods thereof comply in all respects with the quality and specifications stipulated in this contract within a certain period. If within the guarantee period any defect occurs due to quality inferior to the stipulation, poor parts manufacturing process, or hidden material risk, the Buyer is entitled to claim for compensation, and the Seller shall be obliged to for eliminating defects or replacing defective materials or commodities and shall bear all the resulting costs.</p>
+                    <p>卖方须在一定期限内保证其商品的质量符合说明书所规定的指标，如在保证期内发现品质低于规定或零部件的制造工艺不良，或因材料的内部隐患而产生缺陷，买方有权提出索赔，卖方有义务消除缺陷或更换有缺陷的材料或商品，并承担由此引起的各项费用。</p>
+                    <p>8.2  Buyer’s Liability买方责任</p>
+                    <p>8.2.1   The Buyer shall pay in accordance with the provisions of the contract, and receive the goods and documents which are in conformity with the contract.</p>
+                    <p>按照合同规定支付货款，并收取符合合同规定的货物和单据。</p>
+                    <p>8.2.2   The Buyer shall handle import formalities, obtaining the import license as well as other official approval documents.</p>
+                    <p>办理进口手续，取得进口许可证或其他官方批准证件。</p>
+                    <p>9  INSURANCE  保险</p>
+                    <p>Insurance to be covered by Buyer from the time manganese ore is loaded on board the vessel. For this purpose Seller shall advice Buyer within 3 days by fax/E-mail immediately after completion of the loading including commercial invoice, B/L, packing list to make sure that the Buyer can insure the cargo in time. </p>
+                    <p>货物上船后的保险由买方承担。因此，卖方在装船完毕的3日内须立即用传真/电子邮件通知买方商业发票、提单、箱单，以便买方及时投保。  </p>
+                    <p>If the seller hasn’t advice the buyer within 3 days after completion of the loading buy fax about the vessel information as requested above, which causes the buyer’s inability of doing the insurance. Any of the buyer's loss or damage thus incurred shall be bore buy the seller.</p>
+                    <p>如果卖方没有在货物完成装船后3日内通知买方船舶的相关信息，造成买方无法及时投保，卖方必须承担由此造成的一切经济损失。</p>
+                    <p>10  SHIPMENT TERMS 船运条款</p>
+                    <p>All Taxes or levies imposed by the country of Destination, having any effect on this agreement are for Buyer’s Account and his sole responsibility.  As Taxes or levies on port Dues imposed by the country of Origin and having any effect on this agreement are for the seller’s account and his sole responsibility.</p>
+                    <p>所有目的港国家征税费用对本合同造成影响的，买方承担全部责任并支付一切相关费用。所有原产地国家港口税费对本合同造成影响的，卖方承担全部责任并支付一切相关费用。</p>
+                    <p>11   DISCHARGING TERMS 卸货条款</p>
+                    <p>Discharging terms based on CQD</p>
+                    <p>卸货港条款为CQD</p>
+                    <p>12   FORCE MAJEURE 不可抗力条款</p>
+                    <p>Either the Seller or the Buyer shall be relieved of and excused from its obligation to perform hereunder during any period that their or its performance is prevented of delayed by Act of God, War, blockade, revolution, riot, insurrection. Civil commotion, strike,  lockout, fire, flood, storm, tempest or other inclement weather conditions, unforeseen blockade of the access channel at Loading Port, maintenance practice of the port facilities by the duly constituted Port Authority, government restriction, regulation or order. In the event that such a Force Majeure condition occurs or is anticipated, the party directly affected shall advise the other party by facsimile or telex as soon as possible, and shall then submit a certificate issued by Government Authority or Chamber of Commerce as evidence of the Force Majeure condition within 10 days, if possible, after such Force Majeure condition. If the Force Majeure lasts over three months, the Buyer shall have the right to cancel the tonnage involved. The Seller’s inability to obtain license shall not be considered as Force Majeure.</p>
+                    <p>买卖双方将于以下情形豁免不能履行合约的责任﹕</p>
+                    <p>由天意(大自然) 所造成的因素、战争、政治封锁、革命、暴动、起义、民变、罢工、火灾、水灾、风暴或其它恶劣气候所造成在装运不可预料的阻碍因素。若此等不可抗力的情形是可预料的，直接受影响的一方因尽早通过传真或电报知会另一方，以及在10天前(在可能的状况下) 由官方或商会发出证书佐证。若此等不可抗力的情形延续超过三个月，买方有权取消订单。卖方不能取得相关批文将不能视为不可抗力因素。</p>
+                    <p>13	 ARBITRATION仲裁</p>
+                    <p>The parties hereby agree to settle all disputes amicably.  If settlement is not reached, Any dispute arising from or in connection with this contract shall be submitted to China International Economic and Trade Arbitration Commission in Beijing for arbitration which shall be conducted in accordance with the commission’s arbitration rules in effect at the time of applying for arbitration. The arbitral award is final and binding upon both parties. The losing party will pay the arbitration fee.</p>
+                    <p>在履行合同中所引起的争议或差异，双方都要友好的解决。如果不能通过友好地解决争议，应把争议提交给中国经济贸易仲裁委员会。由该委员会按照其仲裁规的国际法律来解决争议。</p>
+                    <p>14	 CONFIDENTIALITY保密</p>
+                    <p>The terms of this Contract and the cargo details and results are confidential except as agreed between the parties which consent shall not be unreasonably withheld.</p>
+                    <p>除非双方同意公开合约内容，此合同的条款及货物资料必须绝对保密。</p>
+                    <p>15	 NON-CIRCUMVENTION 不可欺诈</p>
+                    <p>15.1	The parties shall not in any way whatsoever circumvent or attempt to circumvent each other or any Party involved in any of the transactions. The Parties are desiring or entering into or to the best of their ability assure each other that the original transaction codes established will not be altered or changed.</p>
+                    <p>无论在任何情况下，任何一方皆不可欺诈或尝试欺诈对方, 以及在此交易下所有的参与者。双方均须尽最大的努力来维持原有的交易编号而避免有所更改。</p>
+                    <p>15.2	The parties recognize the contract to be an exclusive and valuable contract of the respective Party and they shall not enter into direct negotiations with such contracts revealed by the other party.</p>
+                    <p>所有参与交易者均承认此合同对双方的独立性及价值性。有关方面不能擅自越位而直接磋商合同。</p>
+                    <p>16   BANKING INFORMATION  银行资料</p>
+                    <table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0" style="margin-left:-.5pt;border-collapse:collapse;mso-table-layout-alt:fixed;
+                         border:none;mso-border-alt:none black 0cm;mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
+                         mso-border-insideh:0cm none black;mso-border-insidev:0cm none black">
+                         <tbody><tr style="mso-yfti-irow:0;mso-yfti-firstrow:yes;height:19.95pt">
+                          <td width="166" style="width:166.25pt;border-top:solid black;border-left:solid black;
+                          border-bottom:solid windowtext;border-right:none black;border-width:1.0pt;
+                          mso-border-top-alt:solid black .5pt;mso-border-left-alt:solid black .5pt;
+                          mso-border-bottom-alt:solid windowtext .5pt;mso-border-right-alt:none black 0cm;
+                          padding:0cm 5.4pt 0cm 5.4pt;height:19.95pt">
+                          <p class="MsoNormal" style="text-align:justify;text-justify:inter-ideograph;
+                          layout-grid-mode:char;text-autospace:ideograph-numeric"><span lang="EN-US" style="font-size:10.5pt;color:red;mso-bidi-font-weight:bold">Bank Name</span><span lang="EN-US" style="font-size:10.5pt;mso-fareast-font-family:宋体;color:red;
+                          mso-fareast-language:ZH-CN;mso-bidi-font-weight:bold"> /</span><span style="font-size:10.5pt;font-family:宋体;mso-ascii-font-family:&quot;Times New Roman&quot;;
+                          mso-hansi-font-family:&quot;Times New Roman&quot;;color:red;mso-fareast-language:ZH-CN;
+                          mso-bidi-font-weight:bold">银行名称</span><span lang="EN-US" style="font-size:10.5pt;
+                          mso-fareast-font-family:宋体;color:red;mso-fareast-language:ZH-CN;mso-bidi-font-weight:
+                          bold">:</span><span lang="EN-US" style="font-size:10.5pt;color:red;mso-bidi-font-weight:
+                          bold"></span></p>
+                          </td>
+                          <td width="276" style="width:275.6pt;border-top:solid windowtext 1.0pt;
+                          border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid black 1.0pt;
+                          mso-border-left-alt:solid black .5pt;mso-border-top-alt:windowtext;
+                          mso-border-left-alt:black;mso-border-bottom-alt:windowtext;mso-border-right-alt:
+                          black;mso-border-style-alt:solid;mso-border-width-alt:.5pt;padding:0cm 5.4pt 0cm 5.4pt;
+                          height:19.95pt">
+                          <p class="MsoNormal" style="text-align:justify;text-justify:inter-ideograph"><span lang="EN-US" style="font-size:10.5pt;mso-fareast-font-family:宋体;color:red;
+                          background:white;mso-fareast-language:ZH-CN"></span></p>
+                          </td>
+                         </tr>
+                         <tr style="mso-yfti-irow:1;height:16.15pt">
+                          <td width="166" style="width:166.25pt;border-top:none;border-left:solid black 1.0pt;
+                          border-bottom:solid black 1.0pt;border-right:none black 1.0pt;mso-border-top-alt:
+                          solid windowtext .5pt;mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:
+                          solid black .5pt;mso-border-bottom-alt:solid black .5pt;mso-border-right-alt:
+                          none black 0cm;padding:0cm 5.4pt 0cm 5.4pt;height:16.15pt">
+                          <p class="MsoNormal" style="text-align:justify;text-justify:inter-ideograph;
+                          layout-grid-mode:char;text-autospace:ideograph-numeric"><span lang="EN-US" style="font-size:10.5pt;color:red;mso-bidi-font-weight:bold">Address</span><span lang="EN-US" style="font-size:10.5pt;mso-fareast-font-family:宋体;color:red;
+                          mso-fareast-language:ZH-CN;mso-bidi-font-weight:bold"> /</span><span style="font-size:10.5pt;font-family:宋体;mso-ascii-font-family:&quot;Times New Roman&quot;;
+                          mso-hansi-font-family:&quot;Times New Roman&quot;;color:red;mso-fareast-language:ZH-CN;
+                          mso-bidi-font-weight:bold">地址</span><span style="font-size:10.5pt;mso-fareast-font-family:
+                          宋体;color:red;mso-fareast-language:ZH-CN;mso-bidi-font-weight:bold"> <span lang="EN-US">:</span></span><span lang="EN-US" style="font-size:10.5pt;
+                          color:red;mso-bidi-font-weight:bold"></span></p>
+                          </td>
+                          <td width="276" style="width:275.6pt;border-top:none;border-left:none;
+                          border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;mso-border-top-alt:
+                          solid windowtext .5pt;mso-border-left-alt:solid black .5pt;mso-border-alt:
+                          solid black .5pt;mso-border-top-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt;
+                          height:16.15pt">
+                          <p class="MsoNormal" style="text-align:justify;text-justify:inter-ideograph"><span lang="EN-US" style="font-size:10.5pt;mso-fareast-font-family:宋体;color:red;
+                          background:white;mso-fareast-language:ZH-CN"></span></p>
+                          </td>
+                         </tr>
+                         <tr style="mso-yfti-irow:2;height:19.95pt">
+                          <td width="166" style="width:166.25pt;border-top:none;border-left:solid black 1.0pt;
+                          border-bottom:solid black 1.0pt;border-right:none black 1.0pt;mso-border-top-alt:
+                          solid black .5pt;mso-border-alt:solid black .5pt;mso-border-right-alt:none black 0cm;
+                          padding:0cm 5.4pt 0cm 5.4pt;height:19.95pt">
+                          <p class="MsoNormal" style="text-align:justify;text-justify:inter-ideograph;
+                          layout-grid-mode:char;text-autospace:ideograph-numeric"><span lang="EN-US" style="font-size:10.0pt;font-family:Arial;color:red;background:white">Beneficiary</span><span lang="EN-US" style="font-size:10.0pt;font-family:宋体;mso-bidi-font-family:Arial;
+                          color:red;background:white;mso-fareast-language:ZH-CN">/</span><span style="font-size:10.0pt;font-family:宋体;mso-bidi-font-family:Arial;color:red;
+                          background:white;mso-fareast-language:ZH-CN">受益人</span><span lang="EN-US" style="font-size:10.5pt;color:red;mso-bidi-font-weight:bold"></span></p>
+                          </td>
+                          <td width="276" style="width:275.6pt;border-top:none;border-left:none;
+                          border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;mso-border-top-alt:
+                          solid black .5pt;mso-border-left-alt:solid black .5pt;mso-border-alt:solid black .5pt;
+                          padding:0cm 5.4pt 0cm 5.4pt;height:19.95pt">
+                          <p class="MsoNormal" style="text-align:justify;text-justify:inter-ideograph;
+                          layout-grid-mode:char;text-autospace:ideograph-numeric"><span lang="EN-US" style="font-size:10.5pt;font-family:Arial;mso-fareast-font-family:宋体;
+                          color:red;mso-fareast-language:ZH-CN"></span></p>
+                          </td>
+                         </tr>
+                         <tr style="mso-yfti-irow:3;height:19.95pt">
+                          <td width="166" style="width:166.25pt;border-top:none;border-left:solid black 1.0pt;
+                          border-bottom:solid black 1.0pt;border-right:none black 1.0pt;mso-border-top-alt:
+                          solid black .5pt;mso-border-alt:solid black .5pt;mso-border-right-alt:none black 0cm;
+                          padding:0cm 5.4pt 0cm 5.4pt;height:19.95pt">
+                          <p class="MsoNormal" style="text-align:justify;text-justify:inter-ideograph;
+                          layout-grid-mode:char;text-autospace:ideograph-numeric"><span lang="EN-US" style="font-size:10.5pt;color:red;mso-bidi-font-weight:bold">Account Name</span><span lang="EN-US" style="font-size:10.5pt;mso-fareast-font-family:宋体;color:red;
+                          mso-fareast-language:ZH-CN;mso-bidi-font-weight:bold">/</span><span style="font-size:10.5pt;font-family:宋体;mso-ascii-font-family:&quot;Times New Roman&quot;;
+                          mso-hansi-font-family:&quot;Times New Roman&quot;;color:red;mso-fareast-language:ZH-CN;
+                          mso-bidi-font-weight:bold">账户名称</span><span lang="EN-US" style="font-size:10.5pt;
+                          mso-fareast-font-family:宋体;color:red;mso-fareast-language:ZH-CN;mso-bidi-font-weight:
+                          bold">:</span><span lang="EN-US" style="font-size:10.5pt;color:red;mso-bidi-font-weight:
+                          bold"></span></p>
+                          </td>
+                          <td width="276" style="width:275.6pt;border-top:none;border-left:none;
+                          border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;mso-border-top-alt:
+                          solid black .5pt;mso-border-left-alt:solid black .5pt;mso-border-alt:solid black .5pt;
+                          padding:0cm 5.4pt 0cm 5.4pt;height:19.95pt">
+                          <p class="MsoNormal" style="text-align:justify;text-justify:inter-ideograph;
+                          layout-grid-mode:char;text-autospace:ideograph-numeric"><span lang="EN-US" style="font-size:10.5pt;color:red"></span></p>
+                          </td>
+                         </tr>
+                         <tr style="mso-yfti-irow:4;height:4.5pt">
+                          <td width="166" style="width:166.25pt;border-top:none;border-left:solid black 1.0pt;
+                          border-bottom:solid black 1.0pt;border-right:none black 1.0pt;mso-border-top-alt:
+                          solid black .5pt;mso-border-alt:solid black .5pt;mso-border-right-alt:none black 0cm;
+                          padding:0cm 5.4pt 0cm 5.4pt;height:4.5pt">
+                          <p class="MsoNormal" style="text-align:justify;text-justify:inter-ideograph;
+                          layout-grid-mode:char;text-autospace:ideograph-numeric"><span lang="EN-US" style="font-size:10.5pt;color:red;mso-bidi-font-weight:bold">Account No.</span><span lang="EN-US" style="font-size:10.5pt;mso-fareast-font-family:宋体;color:red;
+                          mso-fareast-language:ZH-CN;mso-bidi-font-weight:bold"> /</span><span style="font-size:10.5pt;font-family:宋体;mso-ascii-font-family:&quot;Times New Roman&quot;;
+                          mso-hansi-font-family:&quot;Times New Roman&quot;;color:red;mso-fareast-language:ZH-CN;
+                          mso-bidi-font-weight:bold">账户</span><span lang="EN-US" style="font-size:10.5pt;
+                          mso-fareast-font-family:宋体;color:red;mso-fareast-language:ZH-CN;mso-bidi-font-weight:
+                          bold">:</span><span lang="EN-US" style="font-size:10.5pt;color:red;mso-bidi-font-weight:
+                          bold"></span></p>
+                          </td>
+                          <td width="276" style="width:275.6pt;border-top:none;border-left:none;
+                          border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;mso-border-top-alt:
+                          solid black .5pt;mso-border-left-alt:solid black .5pt;mso-border-alt:solid black .5pt;
+                          padding:0cm 5.4pt 0cm 5.4pt;height:4.5pt">
+                          <p class="MsoNormal" style="text-align:justify;text-justify:inter-ideograph"><span lang="EN-US" style="font-size:10.5pt;mso-fareast-font-family:宋体;color:red;
+                          mso-fareast-language:ZH-CN"></span></p>
+                          </td>
+                         </tr>
+                         <tr style="mso-yfti-irow:5;mso-yfti-lastrow:yes;height:16.15pt">
+                          <td width="166" style="width:166.25pt;border-top:none;border-left:solid black 1.0pt;
+                          border-bottom:solid black 1.0pt;border-right:none black 1.0pt;mso-border-top-alt:
+                          solid black .5pt;mso-border-alt:solid black .5pt;mso-border-right-alt:none black 0cm;
+                          padding:0cm 5.4pt 0cm 5.4pt;height:16.15pt">
+                          <p class="MsoNormal" style="text-align:justify;text-justify:inter-ideograph;
+                          layout-grid-mode:char;text-autospace:ideograph-numeric"><span lang="EN-US" style="font-size:10.5pt;color:red">SWIFT No</span><span lang="EN-US" style="font-size:10.5pt;mso-fareast-font-family:宋体;color:red;mso-fareast-language:
+                          ZH-CN">.:</span><span lang="EN-US" style="font-size:10.5pt;color:red"></span></p>
+                          </td>
+                          <td width="276" style="width:275.6pt;border-top:none;border-left:none;
+                          border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;mso-border-top-alt:
+                          solid black .5pt;mso-border-left-alt:solid black .5pt;mso-border-alt:solid black .5pt;
+                          padding:0cm 5.4pt 0cm 5.4pt;height:16.15pt">
+                          <p class="MsoNormal" style="text-align:justify;text-justify:inter-ideograph"><span lang="EN-US" style="font-size:10.5pt;mso-fareast-font-family:宋体;color:red;
+                          mso-fareast-language:ZH-CN;mso-bidi-font-weight:bold"></span></p>
+                          </td>
+                         </tr>
+                        </tbody>
+                    </table>
+                    <p>Buyer’s Bank Information开证申请人银行资料</p>
+                    <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" style="margin-left:-.5pt;border-collapse:collapse;mso-table-layout-alt:fixed;
+                     mso-padding-alt:0cm 5.4pt 0cm 5.4pt">
+                     <tbody><tr style="mso-yfti-irow:0;mso-yfti-firstrow:yes;height:21.1pt">
+                      <td width="166" valign="top" style="width:166.25pt;border-top:solid black 1.0pt;
+                      border-left:solid black 1.0pt;border-bottom:solid windowtext 1.0pt;
+                      border-right:none;mso-border-top-alt:solid black .5pt;mso-border-left-alt:
+                      solid black .5pt;mso-border-bottom-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt;
+                      height:21.1pt">
+                      <p class="MsoNormal"><span lang="EN-US" style="font-size:10.5pt;mso-bidi-font-weight:bold">Bank Name</span><span lang="EN-US" style="font-size:10.5pt;mso-fareast-font-family:宋体;mso-fareast-language:
+                      ZH-CN;mso-bidi-font-weight:bold"> /</span><span style="font-size:10.5pt;
+                      font-family:宋体;mso-ascii-font-family:&quot;Times New Roman&quot;;mso-hansi-font-family:
+                      &quot;Times New Roman&quot;;mso-fareast-language:ZH-CN;mso-bidi-font-weight:bold">银行名称</span><span lang="EN-US" style="font-size:10.5pt;mso-fareast-font-family:宋体;mso-fareast-language:
+                      ZH-CN;mso-bidi-font-weight:bold">:</span><span lang="EN-US" style="font-size:
+                      10.5pt;mso-bidi-font-weight:bold"></span></p>
+                      </td>
+                      <td width="286" style="width:286.1pt;border-top:windowtext;border-left:black;
+                      border-bottom:windowtext;border-right:black;border-style:solid;border-width:
+                      1.0pt;mso-border-top-alt:windowtext;mso-border-left-alt:black;mso-border-bottom-alt:
+                      windowtext;mso-border-right-alt:black;mso-border-style-alt:solid;mso-border-width-alt:
+                      .5pt;padding:0cm 5.4pt 0cm 5.4pt;height:21.1pt">
+                      <p class="MsoNormal"><span lang="EN-US" style="font-size:10.5pt;mso-fareast-font-family:
+                      宋体;color:black;background:white;mso-fareast-language:ZH-CN;mso-bidi-font-weight:
+                      bold">BANK OF CHINA LIMITED SHANDONG BRANCH,QINGDAO ECONOMIC AND TECHNICAL
+                      DEVELOPMENT ZONE SUB-BRANCH</span></p>
+                      </td>
+                     </tr>
+                     <tr style="mso-yfti-irow:1;height:21.05pt">
+                      <td width="166" valign="top" style="width:166.25pt;border-top:none;border-left:
+                      solid black 1.0pt;border-bottom:solid black 1.0pt;border-right:none;
+                      mso-border-top-alt:solid windowtext .5pt;mso-border-top-alt:solid windowtext .5pt;
+                      mso-border-left-alt:solid black .5pt;mso-border-bottom-alt:solid black .5pt;
+                      padding:0cm 5.4pt 0cm 5.4pt;height:21.05pt">
+                      <p class="MsoNormal"><span lang="EN-US" style="font-size:10.5pt;mso-bidi-font-weight:bold">Address</span><span lang="EN-US" style="font-size:10.5pt;mso-fareast-font-family:宋体;mso-fareast-language:
+                      ZH-CN;mso-bidi-font-weight:bold"> /</span><span style="font-size:10.5pt;
+                      font-family:宋体;mso-ascii-font-family:&quot;Times New Roman&quot;;mso-hansi-font-family:
+                      &quot;Times New Roman&quot;;mso-fareast-language:ZH-CN;mso-bidi-font-weight:bold">地址</span><span lang="EN-US" style="font-size:10.5pt;mso-fareast-font-family:宋体;mso-fareast-language:
+                      ZH-CN;mso-bidi-font-weight:bold">:</span><span lang="EN-US" style="font-size:
+                      10.5pt;mso-bidi-font-weight:bold"></span></p>
+                      </td>
+                      <td width="286" style="width:286.1pt;border:solid black 1.0pt;border-top:none;
+                      mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid black .5pt;
+                      mso-border-top-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt;
+                      height:21.05pt">
+                      <p class="NewNewNewNewNewNewNewNew" align="left"><span lang="EN-US" style="mso-bidi-font-size:10.5pt;
+                      background:white;mso-bidi-font-weight:bold">No.65 XIANGJIANG ROAD,QINGDAO
+                      ECONOMIC AND TECHINICAL DEVELOPMENT ZONE,QINGDAO,SHANDONG,CHINA</span></p>
+                      </td>
+                     </tr>
+                     <tr style="mso-yfti-irow:2;height:18.35pt">
+                      <td width="166" valign="top" style="width:166.25pt;border-top:none;border-left:
+                      solid black 1.0pt;border-bottom:solid black 1.0pt;border-right:none;
+                      mso-border-top-alt:solid black .5pt;mso-border-top-alt:solid black .5pt;
+                      mso-border-left-alt:solid black .5pt;mso-border-bottom-alt:solid black .5pt;
+                      padding:0cm 5.4pt 0cm 5.4pt;height:18.35pt">
+                      <p class="MsoNormal"><span lang="EN-US" style="font-size:10.5pt;mso-bidi-font-weight:bold">Account Name</span><span lang="EN-US" style="font-size:10.5pt;mso-fareast-font-family:宋体;mso-fareast-language:
+                      ZH-CN;mso-bidi-font-weight:bold">/ </span><span style="font-size:10.5pt;
+                      font-family:宋体;mso-ascii-font-family:&quot;Times New Roman&quot;;mso-hansi-font-family:
+                      &quot;Times New Roman&quot;;mso-fareast-language:ZH-CN;mso-bidi-font-weight:bold">账户名称</span><span lang="EN-US" style="font-size:10.5pt;mso-fareast-font-family:宋体;mso-fareast-language:
+                      ZH-CN;mso-bidi-font-weight:bold">:</span><span lang="EN-US" style="font-size:
+                      10.5pt;mso-bidi-font-weight:bold"></span></p>
+                      </td>
+                      <td width="286" style="width:286.1pt;border:solid black 1.0pt;border-top:none;
+                      mso-border-top-alt:solid black .5pt;mso-border-alt:solid black .5pt;
+                      padding:0cm 5.4pt 0cm 5.4pt;height:18.35pt">
+                      <p class="MsoNormal" style="text-align:justify;text-justify:inter-ideograph;
+                      layout-grid-mode:char;text-autospace:ideograph-numeric"><span lang="EN-US" style="font-size:10.5pt;mso-fareast-font-family:宋体;color:black;mso-fareast-language:
+                      ZH-CN;mso-bidi-font-weight:bold">SHANDONG HIGH-SPEED QINGDAO WEST COAST PORT
+                      CO.,LTD</span></p>
+                      </td>
+                     </tr>
+                     <tr style="mso-yfti-irow:3;height:18.6pt">
+                      <td width="166" valign="top" style="width:166.25pt;border-top:none;border-left:
+                      solid black 1.0pt;border-bottom:solid black 1.0pt;border-right:none;
+                      mso-border-top-alt:solid black .5pt;mso-border-top-alt:solid black .5pt;
+                      mso-border-left-alt:solid black .5pt;mso-border-bottom-alt:solid black .5pt;
+                      padding:0cm 5.4pt 0cm 5.4pt;height:18.6pt">
+                      <p class="MsoNormal"><span lang="EN-US" style="font-size:10.5pt">Applicant/</span><span lang="EN-US" style="font-size:10.5pt;font-family:宋体;mso-bidi-font-family:宋体">开证申请人</span><span lang="EN-US" style="font-size:10.5pt"></span></p>
+                      </td>
+                      <td width="286" valign="top" style="width:286.1pt;border:solid black 1.0pt;
+                      border-top:none;mso-border-top-alt:solid black .5pt;mso-border-alt:solid black .5pt;
+                      padding:0cm 5.4pt 0cm 5.4pt;height:18.6pt">
+                      <p class="MsoNormal"><span lang="EN-US" style="font-size:10.5pt">SHANDONG
+                      HIGH-SPEED QINGDAO WEST COAST PORT CO.,LTD</span></p>
+                      </td>
+                     </tr>
+                     <tr style="mso-yfti-irow:4;height:18.6pt">
+                      <td width="166" valign="top" style="width:166.25pt;border-top:none;border-left:
+                      solid black 1.0pt;border-bottom:solid black 1.0pt;border-right:none;
+                      mso-border-top-alt:solid black .5pt;mso-border-top-alt:solid black .5pt;
+                      mso-border-left-alt:solid black .5pt;mso-border-bottom-alt:solid black .5pt;
+                      padding:0cm 5.4pt 0cm 5.4pt;height:18.6pt">
+                      <p class="MsoNormal"><span lang="EN-US" style="font-size:10.5pt;mso-bidi-font-weight:bold">Account No.</span><span lang="EN-US" style="font-size:10.5pt;mso-fareast-font-family:宋体;mso-fareast-language:
+                      ZH-CN;mso-bidi-font-weight:bold"> / </span><span style="font-size:10.5pt;
+                      font-family:宋体;mso-ascii-font-family:&quot;Times New Roman&quot;;mso-hansi-font-family:
+                      &quot;Times New Roman&quot;;mso-fareast-language:ZH-CN;mso-bidi-font-weight:bold">账户</span><span lang="EN-US" style="font-size:10.5pt;mso-fareast-font-family:宋体;mso-fareast-language:
+                      ZH-CN;mso-bidi-font-weight:bold">:</span><span lang="EN-US" style="font-size:
+                      10.5pt;mso-bidi-font-weight:bold"></span></p>
+                      </td>
+                      <td width="286" style="width:286.1pt;border:solid black 1.0pt;border-top:none;
+                      mso-border-top-alt:solid black .5pt;mso-border-alt:solid black .5pt;
+                      padding:0cm 5.4pt 0cm 5.4pt;height:18.6pt">
+                      <p class="MsoNormal" style="text-align:justify;text-justify:inter-ideograph"><span lang="EN-US" style="font-size:10.5pt;mso-fareast-font-family:宋体;mso-fareast-language:
+                      ZH-CN;mso-bidi-font-weight:bold">209126073199</span></p>
+                      </td>
+                     </tr>
+                     <tr style="mso-yfti-irow:5;mso-yfti-lastrow:yes;height:18.6pt">
+                      <td width="166" valign="top" style="width:166.25pt;border-top:none;border-left:
+                      solid black 1.0pt;border-bottom:solid black 1.0pt;border-right:none;
+                      mso-border-top-alt:solid black .5pt;mso-border-top-alt:solid black .5pt;
+                      mso-border-left-alt:solid black .5pt;mso-border-bottom-alt:solid black .5pt;
+                      padding:0cm 5.4pt 0cm 5.4pt;height:18.6pt">
+                      <p class="MsoNormal"><span lang="EN-US" style="font-size:10.5pt">SWIFT No</span><span lang="EN-US" style="font-size:10.5pt;mso-fareast-font-family:宋体;mso-fareast-language:ZH-CN">.</span><span lang="EN-US" style="font-size:10.5pt">:</span></p>
+                      </td>
+                      <td width="286" style="width:286.1pt;border:solid black 1.0pt;border-top:none;
+                      mso-border-top-alt:solid black .5pt;mso-border-alt:solid black .5pt;
+                      padding:0cm 5.4pt 0cm 5.4pt;height:18.6pt">
+                      <p class="MsoNormal" style="text-align:justify;text-justify:inter-ideograph"><span lang="EN-US" style="font-size:10.5pt;mso-fareast-font-family:宋体;mso-fareast-language:
+                      ZH-CN;mso-bidi-font-weight:bold">BKCHCNBJ500</span></p>
+                      </td>
+                     </tr>
+                    </tbody></table>
+                    <p>17   OTHER TERMS AND CONDITIONS其它条文</p>
+                    <p>17.1	This Contract is written in both English and Chinese languages. Both versions are equally authentic.</p>
+                    <p>本合同用英文和中文写成。两种文本具有同等效力。</p>
+                    <p>17.2   The terms and conditions of this Contract are not intended to form any precedent for any other Contract.</p>
+                    <p>此合同的条文不准备用来作为制定其它合同之用。</p>
+                    <p>17.3  Both parties shall short sign and stamp at the bottom of each page of this AGREEMENT.</p>
+                    <p>双方在本协议下的每一页签字+盖章。</p>
+                    <p>17.4	Both the Buyer and the Seller shall execute and sign this Contract.</p>
+                    <p>本合同须由买卖双方各自代表正式签署。</p>
+                    <p>Uniform Customs and Practice for Documentary Credits (2007 version), Publication No.600 shall apply to this contract as well as INCOTERMS-2000 as published by the International Chamber of Commerce.</p>
+                    <p>国际商会第600号手册《跟单信用证统一惯例》2007年修订本及《国际贸易术语通则》-2000版将适用本合同。</p>
+                    <p>IN WITNESS WHEREOF, both parties hereto have executed this Contract as of the day and year first above written. This Contract will take effect immediately upon both parties’ signature and stamp.</p>
+                    <p>依据上述日期，此买卖合同在双方正式签字盖章后生效。</p>
+                </div>
+                <br/>
+                <br/>
+                <br/>
+                <div class="col-xs-5 col-xs-offset-1 text-left">
+                    <p>BUYER :</p>
+                </div>
+                <div class="col-xs-5 col-xs-offset-1 text-left">
+                    <p>SELLER:</p>
+                </div>
+                <div class="col-xs-5 col-xs-offset-1 text-left">
+                    <p>Company: SHANDONG HIGH-SPEED QINGDAO WEST COAST PORT CO.,LTD</p>
+                </div>
+                <div class="col-xs-5 col-xs-offset-1 text-left">
+                    <p>Company:</p>
+                    <br/>
+                </div>
+                <div class="col-xs-5 col-xs-offset-1 text-left">
+                    <p>________________________</p>
+                </div>
+                <div class="col-xs-5 col-xs-offset-1 text-left">
+                    <p>________________________</p>
+                </div>
+                <div class="col-xs-5 col-xs-offset-1 text-left">
+                    <p>By:</p>
+                </div>
+                <div class="col-xs-5 col-xs-offset-1 text-left">
+                    <p>By:</p>
+                </div>
+                <div class="col-xs-5 col-xs-offset-1 text-left">
+                    <p>Date:</p>
+                </div>
+                <div class="col-xs-5 col-xs-offset-1 text-left">
+                    <p>Date:</p>
+                </div>
+
+            </div>
+        </div>
+    </t>
+</template>
+
+<template id="report_purchase_contract">
+    <t t-call="report.html_container">
+        <t t-foreach="doc_ids" t-as="doc_id">
+            <t t-raw="translate_doc(doc_id, doc_model, 'partner_id.lang', 'qdodoo_car_import_trade.report_purchase_contract_document')"/>
+        </t>
+    </t>
+</template>
+</data>
+</openerp>

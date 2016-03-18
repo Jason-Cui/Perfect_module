@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+<template id="report_car_make_invoice_document">
+    <!--<t t-call="report.external_layout">-->
+    <t>
+        <div class="page">
+            <div class="oe_structure"/>
+            <div class="row">
+                <div class="text-center">
+                    <h1><strong>山东高速青岛西海岸港口有限公司发票开具申请单</strong></h1>
+                </div>
+            </div>
+            <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="637" style="width:637.0pt;border-collapse:collapse;mso-yfti-tbllook:1184;
+                 mso-padding-alt:0cm 5.4pt 0cm 5.4pt">
+                 <tbody><tr style="mso-yfti-irow:0;mso-yfti-firstrow:yes;height:15.0pt">
+                  <td width="100" nowrap="" style="width:99.75pt;padding:0cm 5.4pt 0cm 5.4pt;
+                  height:15.0pt">
+                  <p class="MsoNormal" align="left"><span style="font-size:11.0pt;mso-ascii-font-family:等线;mso-fareast-font-family:
+                  等线;mso-hansi-font-family:等线;mso-bidi-font-family:宋体;color:black;mso-font-kerning:
+                  0pt">发票类型：<span lang="EN-US"></span></span></p>
+                  </td>
+                  <td width="141" nowrap="" colspan="3" style="width:141.3pt;border:none;border-bottom:
+                  solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt">
+                  <p class="MsoNormal" align="left"><span style="font-size:11.0pt;mso-ascii-font-family:等线;mso-fareast-font-family:
+                  等线;mso-hansi-font-family:等线;mso-bidi-font-family:宋体;color:black;mso-font-kerning:
+                  0pt">增值税专用发票<span lang="EN-US"></span></span></p>
+                  </td>
+                  <td width="81" nowrap="" colspan="2" style="width:81.2pt;border:none;border-bottom:
+                  solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt">
+                  <p class="MsoNormal" align="center" style="text-align:center;mso-pagination:widow-orphan"><span lang="EN-US" style="font-size:11.0pt;mso-ascii-font-family:等线;mso-fareast-font-family:
+                  等线;mso-hansi-font-family:等线;mso-bidi-font-family:宋体;color:black;mso-font-kerning:
+                  0pt" t-esc="o.date"></span></p>
+                  </td>
+                  <td width="117" nowrap="" style="width:116.55pt;padding:0cm 5.4pt 0cm 5.4pt;
+                  height:15.0pt"></td>
+                  <td width="98" nowrap="" colspan="3" style="width:97.55pt;padding:0cm 5.4pt 0cm 5.4pt;
+                  height:15.0pt">
+                  <p class="MsoNormal" align="left"><span style="font-size:11.0pt;mso-ascii-font-family:等线;mso-fareast-font-family:
+                  等线;mso-hansi-font-family:等线;mso-bidi-font-family:宋体;color:black;mso-font-kerning:
+                  0pt">合同编号：<span lang="EN-US" t-esc="o.contract_id.contract_num"></span></span></p>
+                  </td>
+                  <!--<td width="101" nowrap="" style="width:100.65pt;padding:0cm 5.4pt 0cm 5.4pt;-->
+                  <!--height:15.0pt"></td>-->
+                  <!--[if !supportMisalignedRows]-->
+                  <td style="height:15.0pt;border:none" width="0" height="15"></td>
+                  <!--[endif]-->
+                 </tr>
+                 <tr style="mso-yfti-irow:1;height:26.25pt">
+                  <td width="100" rowspan="3" style="width:99.75pt;border:solid windowtext 1.0pt;
+                  mso-border-top-alt:1.0pt;mso-border-left-alt:1.0pt;mso-border-bottom-alt:
+                  .5pt;mso-border-right-alt:.5pt;mso-border-color-alt:windowtext;mso-border-style-alt:
+                  solid;padding:0cm 5.4pt 0cm 5.4pt;height:26.25pt">
+                  <p class="MsoNormal" align="center" style="text-align:center;mso-pagination:widow-orphan"><span style="font-size:11.0pt;mso-ascii-font-family:等线;mso-fareast-font-family:
+                  等线;mso-hansi-font-family:等线;mso-bidi-font-family:宋体;color:black;mso-font-kerning:
+                  0pt">客户<span lang="EN-US"><br/>
+                  </span>基本<span lang="EN-US"><br/>
+                  </span>信息<span lang="EN-US"></span></span></p>
+                  </td>
+                  <td width="79" nowrap="" style="width:78.6pt;border-top:none;border-left:none;
+                  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+                  mso-border-bottom-alt:solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;
+                  padding:0cm 5.4pt 0cm 5.4pt;height:26.25pt">
+                  <p class="MsoNormal" align="center" style="text-align:center;mso-pagination:widow-orphan"><span style="font-size:11.0pt;mso-ascii-font-family:等线;mso-fareast-font-family:
+                  等线;mso-hansi-font-family:等线;mso-bidi-font-family:宋体;color:black;mso-font-kerning:
+                  0pt">客户名称<span lang="EN-US"></span></span></p>
+                  </td>
+                  <td width="144" nowrap="" colspan="4" style="width:143.9pt;border-top:solid windowtext 1.0pt;
+                  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid black 1.0pt;
+                  mso-border-top-alt:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext .5pt;
+                  mso-border-right-alt:solid black .5pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+                  26.25pt">
+                  <p class="MsoNormal" align="center" style="text-align:center;mso-pagination:widow-orphan"><span style="font-size:11.0pt;mso-ascii-font-family:等线;mso-fareast-font-family:
+                  等线;mso-hansi-font-family:等线;mso-bidi-font-family:宋体;color:black;mso-font-kerning:
+                  0pt">　<span lang="EN-US" t-esc="o.partner_id.name"></span></span></p>
+                  </td>
+                  <td width="117" nowrap="" style="width:116.55pt;border:solid windowtext 1.0pt;
+                  border-left:none;mso-border-top-alt:solid windowtext 1.0pt;mso-border-bottom-alt:
+                  solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;padding:
+                  0cm 5.4pt 0cm 5.4pt;height:26.25pt">
+                  <p class="MsoNormal" align="center" style="text-align:center;mso-pagination:widow-orphan"><span style="font-size:11.0pt;mso-ascii-font-family:等线;mso-fareast-font-family:
+                  等线;mso-hansi-font-family:等线;mso-bidi-font-family:宋体;color:black;mso-font-kerning:
+                  0pt">纳税人识别号<span lang="EN-US"></span></span></p>
+                  </td>
+                  <td width="198" nowrap="" colspan="3" style="width:198.2pt;border-top:solid windowtext 1.0pt;
+                  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid black 1.0pt;
+                  mso-border-top-alt:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext .5pt;
+                  mso-border-right-alt:solid black 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+                  height:26.25pt">
+                  <p class="MsoNormal" align="center" style="text-align:center;mso-pagination:widow-orphan"><span style="font-size:11.0pt;mso-ascii-font-family:等线;mso-fareast-font-family:
+                  等线;mso-hansi-font-family:等线;mso-bidi-font-family:宋体;color:black;mso-font-kerning:
+                  0pt">　<span lang="EN-US" t-esc="o.tax_person_num"></span></span></p>
+                  </td>
+                  <!--[if !supportMisalignedRows]-->
+                  <td style="height:26.25pt;border:none" width="0" height="26"></td>
+                  <!--[endif]-->
+                 </tr>
+                 <tr style="mso-yfti-irow:2;height:26.25pt">
+                  <td width="79" nowrap="" style="width:78.6pt;border-top:none;border-left:none;
+                  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+                  mso-border-bottom-alt:solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;
+                  padding:0cm 5.4pt 0cm 5.4pt;height:26.25pt">
+                  <p class="MsoNormal" align="center" style="text-align:center;mso-pagination:widow-orphan"><span style="font-size:11.0pt;mso-ascii-font-family:等线;mso-fareast-font-family:
+                  等线;mso-hansi-font-family:等线;mso-bidi-font-family:宋体;color:black;mso-font-kerning:
+                  0pt">地址<span lang="EN-US"></span></span></p>
+                  </td>
+                  <td width="144" nowrap="" colspan="4" style="width:143.9pt;border-top:none;
+                  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid black 1.0pt;
+                  mso-border-top-alt:solid windowtext .5pt;mso-border-top-alt:solid windowtext .5pt;
+                  mso-border-bottom-alt:solid windowtext .5pt;mso-border-right-alt:solid black .5pt;
+                  padding:0cm 5.4pt 0cm 5.4pt;height:26.25pt">
+                  <p class="MsoNormal" align="center" style="text-align:center;mso-pagination:widow-orphan"><span style="font-size:11.0pt;mso-ascii-font-family:等线;mso-fareast-font-family:
+                  等线;mso-hansi-font-family:等线;mso-bidi-font-family:宋体;color:black;mso-font-kerning:
+                  0pt">　<span t-esc="o.partner_id.city"/><span t-esc="o.partner_id.street2"/><span t-esc="o.partner_id.street"/></span></p>
+                  </td>
+                  <td width="117" nowrap="" style="width:116.55pt;border-top:none;border-left:none;
+                  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+                  mso-border-bottom-alt:solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;
+                  padding:0cm 5.4pt 0cm 5.4pt;height:26.25pt">
+                  <p class="MsoNormal" align="center" style="text-align:center;mso-pagination:widow-orphan"><span style="font-size:11.0pt;mso-ascii-font-family:等线;mso-fareast-font-family:
+                  等线;mso-hansi-font-family:等线;mso-bidi-font-family:宋体;color:black;mso-font-kerning:
+                  0pt">电话<span lang="EN-US"></span></span></p>
+                  </td>
+                  <td width="198" nowrap="" colspan="3" style="width:198.2pt;border-top:none;
+                  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid black 1.0pt;
+                  mso-border-top-alt:solid windowtext .5pt;mso-border-top-alt:solid windowtext .5pt;
+                  mso-border-bottom-alt:solid windowtext .5pt;mso-border-right-alt:solid black 1.0pt;
+                  padding:0cm 5.4pt 0cm 5.4pt;height:26.25pt">
+                  <p class="MsoNormal" align="center" style="text-align:center;mso-pagination:widow-orphan"><span style="font-size:11.0pt;mso-ascii-font-family:等线;mso-fareast-font-family:
+                  等线;mso-hansi-font-family:等线;mso-bidi-font-family:宋体;color:black;mso-font-kerning:
+                  0pt">　<span lang="EN-US" t-esc="o.partner_id.phone"></span></span></p>
+                  </td>
+                  <!--[if !supportMisalignedRows]-->
+                  <td style="height:26.25pt;border:none" width="0" height="26"></td>
+                  <!--[endif]-->
+                 </tr>
+                 <tr style="mso-yfti-irow:3;height:26.25pt">
+                  <td width="79" nowrap="" style="width:78.6pt;border-top:none;border-left:none;
+                  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+                  mso-border-bottom-alt:solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;
+                  padding:0cm 5.4pt 0cm 5.4pt;height:26.25pt">
+                  <p class="MsoNormal" align="center" style="text-align:center;mso-pagination:widow-orphan"><span style="font-size:11.0pt;mso-ascii-font-family:等线;mso-fareast-font-family:
+                  等线;mso-hansi-font-family:等线;mso-bidi-font-family:宋体;color:black;mso-font-kerning:
+                  0pt">开户银行<span lang="EN-US"></span></span></p>
+                  </td>
+                  <td width="144" nowrap="" colspan="4" style="width:143.9pt;border-top:none;
+                  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid black 1.0pt;
+                  mso-border-top-alt:solid windowtext .5pt;mso-border-top-alt:solid windowtext .5pt;
+                  mso-border-bottom-alt:solid windowtext .5pt;mso-border-right-alt:solid black .5pt;
+                  padding:0cm 5.4pt 0cm 5.4pt;height:26.25pt">
+                  <p t-if="o.bank_id" class="MsoNormal" align="center" style="text-align:center;mso-pagination:widow-orphan"><span style="font-size:11.0pt;mso-ascii-font-family:等线;mso-fareast-font-family:
+                  等线;mso-hansi-font-family:等线;mso-bidi-font-family:宋体;color:black;mso-font-kerning:
+                  0pt">　<span lang="EN-US" t-esc="o.bank_id.name"></span></span></p>
+                  </td>
+                  <td width="117" nowrap="" style="width:116.55pt;border-top:none;border-left:none;
+                  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+                  mso-border-bottom-alt:solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;
+                  padding:0cm 5.4pt 0cm 5.4pt;height:26.25pt">
+                  <p class="MsoNormal" align="center" style="text-align:center;mso-pagination:widow-orphan"><span style="font-size:11.0pt;mso-ascii-font-family:等线;mso-fareast-font-family:
+                  等线;mso-hansi-font-family:等线;mso-bidi-font-family:宋体;color:black;mso-font-kerning:
+                  0pt">账号<span lang="EN-US"></span></span></p>
+                  </td>
+                  <td width="198" nowrap="" colspan="3" style="width:198.2pt;border-top:none;
+                  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid black 1.0pt;
+                  mso-border-top-alt:solid windowtext .5pt;mso-border-top-alt:solid windowtext .5pt;
+                  mso-border-bottom-alt:solid windowtext .5pt;mso-border-right-alt:solid black 1.0pt;
+                  padding:0cm 5.4pt 0cm 5.4pt;height:26.25pt">
+                  <p t-if="o.account_id" class="MsoNormal" align="center" style="text-align:center;mso-pagination:widow-orphan"><span style="font-size:11.0pt;mso-ascii-font-family:等线;mso-fareast-font-family:
+                  等线;mso-hansi-font-family:等线;mso-bidi-font-family:宋体;color:black;mso-font-kerning:
+                  0pt">　<span lang="EN-US" t-esc="o.account_id.name"></span></span></p>
+                  </td>
+                  <!--[if !supportMisalignedRows]-->
+                  <td style="height:26.25pt;border:none" width="0" height="26"></td>
+                  <!--[endif]-->
+                 </tr>
+                 <tr style="mso-yfti-irow:4;height:26.25pt">
+                  <td width="100" nowrap="" rowspan="3" style="width:99.75pt;border:solid windowtext 1.0pt;
+                  border-top:none;mso-border-left-alt:solid windowtext 1.0pt;mso-border-bottom-alt:
+                  solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;padding:
+                  0cm 5.4pt 0cm 5.4pt;height:26.25pt">
+                  <p class="MsoNormal" align="center" style="text-align:center;mso-pagination:widow-orphan"><span style="font-size:11.0pt;mso-ascii-font-family:等线;mso-fareast-font-family:
+                  等线;mso-hansi-font-family:等线;mso-bidi-font-family:宋体;color:black;mso-font-kerning:
+                  0pt">开票信息<span lang="EN-US"></span></span></p>
+                  </td>
+                  <td width="79" nowrap="" style="width:78.6pt;border-top:none;border-left:none;
+                  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+                  mso-border-bottom-alt:solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;
+                  padding:0cm 5.4pt 0cm 5.4pt;height:26.25pt">
+                  <p class="MsoNormal" align="center" style="text-align:center;mso-pagination:widow-orphan"><span style="font-size:11.0pt;mso-ascii-font-family:等线;mso-fareast-font-family:
+                  等线;mso-hansi-font-family:等线;mso-bidi-font-family:宋体;color:black;mso-font-kerning:
+                  0pt">品名<span lang="EN-US"></span></span></p>
+                  </td>
+                  <td width="3" nowrap="" style="width:3.1pt;border-top:none;border-left:none;
+                  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+                  mso-border-bottom-alt:solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;
+                  padding:0cm 50pt 0cm 50pt;height:26.25pt">
+                  <p class="MsoNormal" align="center" style="text-align:center;mso-pagination:widow-orphan"><span style="font-size:11.0pt;mso-ascii-font-family:等线;mso-fareast-font-family:
+                  等线;mso-hansi-font-family:等线;mso-bidi-font-family:宋体;color:black;mso-font-kerning:
+                  0pt">　<span lang="EN-US" ></span></span></p>
+                  </td>
+                  <td width="60" nowrap="" style="width:59.6pt;border-top:none;border-left:none;
+                  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+                  mso-border-bottom-alt:solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;
+                  padding:0cm 5.4pt 0cm 5.4pt;height:26.25pt">
+                  <p class="MsoNormal" align="center" style="text-align:center;mso-pagination:widow-orphan"><span style="font-size:11.0pt;mso-ascii-font-family:等线;mso-fareast-font-family:
+                  等线;mso-hansi-font-family:等线;mso-bidi-font-family:宋体;color:black;mso-font-kerning:
+                  0pt">单位：<span lang="EN-US"></span></span></p>
+                  </td>
+                  <td width="22" nowrap="" style="width:21.6pt;border-top:none;border-left:none;
+                  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+                  mso-border-bottom-alt:solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;
+                  padding:0cm 5.4pt 0cm 5.4pt;height:26.25pt">
+                  <p class="MsoNormal" align="center" style="text-align:center;mso-pagination:widow-orphan"><span style="font-size:11.0pt;mso-ascii-font-family:等线;mso-fareast-font-family:
+                  等线;mso-hansi-font-family:等线;mso-bidi-font-family:宋体;color:black;mso-font-kerning:
+                  0pt">辆<span lang="EN-US"></span></span></p>
+                  </td>
+                  <td width="60" nowrap="" style="width:59.6pt;border-top:none;border-left:none;
+                  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+                  mso-border-bottom-alt:solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;
+                  padding:0cm 5.4pt 0cm 5.4pt;height:26.25pt">
+                  <p class="MsoNormal" align="center" style="text-align:center;mso-pagination:widow-orphan"><span style="font-size:11.0pt;mso-ascii-font-family:等线;mso-fareast-font-family:
+                  等线;mso-hansi-font-family:等线;mso-bidi-font-family:宋体;color:black;mso-font-kerning:
+                  0pt">数量：<span lang="EN-US"></span></span></p>
+                  </td>
+                  <td width="30" nowrap="" style="width:30.1pt;border-top:none;
+                  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+                  mso-border-top-alt:solid windowtext .5pt;mso-border-top-alt:solid windowtext .5pt;
+                  mso-border-bottom-alt:solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;
+                  padding:0cm 5.4pt 0cm 5.4pt;height:26.25pt">
+                  <p class="MsoNormal" align="center" style="text-align:center;mso-pagination:widow-orphan"><span style="font-size:11.0pt;mso-ascii-font-family:等线;mso-fareast-font-family:
+                  等线;mso-hansi-font-family:等线;mso-bidi-font-family:宋体;color:black;mso-font-kerning:
+                  0pt">　<span lang="EN-US" t-esc="o.car_number"></span></span></p>
+                  </td>
+                  <td width="98" nowrap="" style="width:97.55pt;border-top:none;border-left:none;
+                  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+                  mso-border-bottom-alt:solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;
+                  padding:0cm 5.4pt 0cm 5.4pt;height:26.25pt">
+                  <p class="MsoNormal" align="left"><span style="font-size:11.0pt;mso-ascii-font-family:等线;mso-fareast-font-family:
+                  等线;mso-hansi-font-family:等线;mso-bidi-font-family:宋体;color:black;mso-font-kerning:
+                  0pt">总价（元）<span lang="EN-US"></span></span></p>
+                  </td>
+                  <td width="3" nowrap="" colspan="2" style="width:3.1pt;border-top:none;border-left:none;
+                  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+                  mso-border-bottom-alt:solid windowtext .5pt;mso-border-right-alt:solid windowtext 1.0pt;
+                  padding:0cm 5.4pt 0cm 5.4pt;height:26.25pt">
+                  <p class="MsoNormal" align="left"><span style="font-size:11.0pt;mso-ascii-font-family:等线;mso-fareast-font-family:
+                  等线;mso-hansi-font-family:等线;mso-bidi-font-family:宋体;color:black;mso-font-kerning:
+                  0pt">　<span lang="EN-US" t-esc="o.all_money"></span></span></p>
+                  </td>
+                  <!--[if !supportMisalignedRows]-->
+                  <td style="height:26.25pt;border:none" width="0" height="26"></td>
+                  <!--[endif]-->
+                 </tr>
+                 <tr style="mso-yfti-irow:5;height:26.25pt">
+                  <td width="79" nowrap="" style="width:78.6pt;border-top:none;border-left:none;
+                  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+                  mso-border-bottom-alt:solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;
+                  padding:0cm 5.4pt 0cm 5.4pt;height:26.25pt">
+                  <p class="MsoNormal" align="center" style="text-align:center;mso-pagination:widow-orphan"><span style="font-size:11.0pt;mso-ascii-font-family:等线;mso-fareast-font-family:
+                  等线;mso-hansi-font-family:等线;mso-bidi-font-family:宋体;color:black;mso-font-kerning:
+                  0pt">金额<span lang="EN-US"></span></span></p>
+                  </td>
+                  <td width="459" nowrap="" colspan="8" style="width:458.65pt;border-top:none;
+                  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid black 1.0pt;
+                  mso-border-top-alt:solid windowtext .5pt;mso-border-top-alt:solid windowtext .5pt;
+                  mso-border-bottom-alt:solid windowtext .5pt;mso-border-right-alt:solid black 1.0pt;
+                  padding:0cm 5.4pt 0cm 5.4pt;height:26.25pt">
+                  <p class="MsoNormal" align="left"><span style="font-size:11.0pt;mso-ascii-font-family:等线;mso-fareast-font-family:
+                  等线;mso-hansi-font-family:等线;mso-bidi-font-family:宋体;color:black;mso-font-kerning:
+                  0pt">人民币（大写）<span lang="EN-US">
+                  </span></span></p>
+                  </td>
+                  <!--[if !supportMisalignedRows]-->
+                  <td style="height:26.25pt;border:none" width="0" height="26"></td>
+                  <!--[endif]-->
+                 </tr>
+                 <tr style="mso-yfti-irow:6;height:26.25pt">
+                  <td width="79" nowrap="" style="width:78.6pt;border-top:none;border-left:none;
+                  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+                  mso-border-bottom-alt:solid windowtext .5pt;mso-border-right-alt:solid windowtext .5pt;
+                  padding:0cm 5.4pt 0cm 5.4pt;height:26.25pt">
+                  <p class="MsoNormal" align="center" style="text-align:center;mso-pagination:widow-orphan"><span style="font-size:11.0pt;mso-ascii-font-family:等线;mso-fareast-font-family:
+                  等线;mso-hansi-font-family:等线;mso-bidi-font-family:宋体;color:black;mso-font-kerning:
+                  0pt">备注<span lang="EN-US"></span></span></p>
+                  </td>
+                  <td width="459" nowrap="" colspan="8" style="width:458.65pt;border-top:none;
+                  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid black 1.0pt;
+                  mso-border-top-alt:solid windowtext .5pt;mso-border-top-alt:solid windowtext .5pt;
+                  mso-border-bottom-alt:solid windowtext .5pt;mso-border-right-alt:solid black 1.0pt;
+                  padding:0cm 5.4pt 0cm 5.4pt;height:26.25pt">
+                  <p class="MsoNormal" align="left"><span style="font-size:11.0pt;mso-ascii-font-family:等线;mso-fareast-font-family:
+                  等线;mso-hansi-font-family:等线;mso-bidi-font-family:宋体;color:black;mso-font-kerning:
+                  0pt">　<span lang="EN-US"></span></span></p>
+                  </td>
+                  <!--[if !supportMisalignedRows]-->
+                  <td style="height:26.25pt;border:none" width="0" height="26"></td>
+                  <!--[endif]-->
+                 </tr>
+                 <tr style="mso-yfti-irow:7;height:26.25pt">
+                  <td width="322" nowrap="" colspan="6" style="width:322.25pt;border:solid windowtext 1.0pt;
+                  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+                  mso-border-left-alt:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+                  height:26.25pt">
+                  <p class="MsoNormal" align="left"><span style="font-size:11.0pt;mso-ascii-font-family:等线;mso-fareast-font-family:
+                  等线;mso-hansi-font-family:等线;mso-bidi-font-family:宋体;color:black;mso-font-kerning:
+                  0pt">业务部门负责人：<span lang="EN-US"></span></span></p>
+                  </td>
+                  <td width="315" nowrap="" colspan="4" style="width:314.75pt;border-top:none;
+                  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid black 1.0pt;
+                  mso-border-top-alt:solid windowtext .5pt;mso-border-top-alt:solid windowtext .5pt;
+                  mso-border-bottom-alt:solid windowtext .5pt;mso-border-right-alt:solid black 1.0pt;
+                  padding:0cm 5.4pt 0cm 5.4pt;height:26.25pt">
+                  <p class="MsoNormal" align="left"><span style="font-size:11.0pt;mso-ascii-font-family:等线;mso-fareast-font-family:
+                  等线;mso-hansi-font-family:等线;mso-bidi-font-family:宋体;color:black;mso-font-kerning:
+                  0pt">经办人：<span lang="EN-US"></span></span></p>
+                  </td>
+                  <!--[if !supportMisalignedRows]-->
+                  <td style="height:26.25pt;border:none" width="0" height="26"></td>
+                  <!--[endif]-->
+                 </tr>
+                 <tr style="mso-yfti-irow:8;height:30.0pt">
+                  <td width="178" nowrap="" colspan="2" rowspan="2" valign="top" style="width:178.35pt;
+                  border-top:none;border-left:solid windowtext 1.0pt;border-bottom:solid black 1.0pt;
+                  border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
+                  mso-border-top-alt:windowtext .5pt;mso-border-left-alt:windowtext 1.0pt;
+                  mso-border-bottom-alt:black 1.0pt;mso-border-right-alt:windowtext .5pt;
+                  mso-border-style-alt:solid;padding:0cm 5.4pt 0cm 5.4pt;height:30.0pt">
+                  <p class="MsoNormal" align="left"><span style="font-size:11.0pt;mso-ascii-font-family:等线;mso-fareast-font-family:
+                  等线;mso-hansi-font-family:等线;mso-bidi-font-family:宋体;color:black;mso-font-kerning:
+                  0pt">常务副总：<span lang="EN-US"></span></span></p>
+                  </td>
+                  <td width="63" nowrap="" colspan="2" rowspan="2" valign="top" style="width:62.7pt;
+                  border-top:none;border-left:none;border-bottom:solid black 1.0pt;border-right:
+                  solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:
+                  solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;mso-border-bottom-alt:
+                  solid black 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:30.0pt">
+                  <p class="MsoNormal" align="left"><span style="font-size:11.0pt;mso-ascii-font-family:等线;mso-fareast-font-family:
+                  等线;mso-hansi-font-family:等线;mso-bidi-font-family:宋体;color:black;mso-font-kerning:
+                  0pt">财务总监：<span lang="EN-US"></span></span></p>
+                  </td>
+                  <td width="81" nowrap="" colspan="2" rowspan="2" valign="top" style="width:81.2pt;
+                  border-top:none;border-left:none;border-bottom:solid black 1.0pt;border-right:
+                  solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:
+                  solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;mso-border-bottom-alt:
+                  solid black 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:30.0pt">
+                  <p class="MsoNormal" align="left"><span style="font-size:11.0pt;mso-ascii-font-family:等线;mso-fareast-font-family:
+                  等线;mso-hansi-font-family:等线;mso-bidi-font-family:宋体;color:black;mso-font-kerning:
+                  0pt">分管领导：<span lang="EN-US"></span></span></p>
+                  </td>
+                  <td width="214" nowrap="" colspan="2" rowspan="2" valign="top" style="width:214.1pt;
+                  border-top:none;border-left:none;border-bottom:solid black 1.0pt;border-right:
+                  solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:
+                  solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;mso-border-bottom-alt:
+                  solid black 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:30.0pt">
+                  <p class="MsoNormal" align="left"><span style="font-size:11.0pt;mso-ascii-font-family:等线;mso-fareast-font-family:
+                  等线;mso-hansi-font-family:等线;mso-bidi-font-family:宋体;color:black;mso-font-kerning:
+                  0pt">财务部经理：<span lang="EN-US"></span></span></p>
+                  </td>
+                  <td width="101" nowrap="" colspan="2" rowspan="2" valign="top" style="width:100.65pt;
+                  border-top:none;border-left:none;border-bottom:solid black 1.0pt;border-right:
+                  solid black 1.0pt;mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:
+                  solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt;height:30.0pt">
+                  <p class="MsoNormal" align="left"><span style="font-size:11.0pt;mso-ascii-font-family:等线;mso-fareast-font-family:
+                  等线;mso-hansi-font-family:等线;mso-bidi-font-family:宋体;color:black;mso-font-kerning:
+                  0pt">财务审核：<span lang="EN-US"></span></span></p>
+                  </td>
+                  <!--[if !supportMisalignedRows]-->
+                  <td style="height:30.0pt;border:none" width="0" height="30"></td>
+                  <!--[endif]-->
+                 </tr>
+                 <tr style="mso-yfti-irow:9;mso-yfti-lastrow:yes;height:48.75pt">
+                  <td style="height:48.75pt;border:none" width="0" height="49"></td>
+                  <!--[endif]-->
+                 </tr>
+                </tbody>
+            </table>
+        </div>
+    </t>
+</template>
+
+<template id="report_car_make_invoice">
+    <t t-call="report.html_container">
+        <t t-foreach="doc_ids" t-as="doc_id">
+            <t t-raw="translate_doc(doc_id, doc_model, 'partner_id.lang', 'qdodoo_car_import_trade.report_car_make_invoice_document')"/>
+        </t>
+    </t>
+</template>
+</data>
+</openerp>

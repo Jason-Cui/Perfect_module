@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="form_qdodoo_car_settlement" model="ir.ui.view">
+            <field name="name">qdodoo.car.settlement.form</field>
+            <field name="model">qdodoo.car.settlement</field>
+            <field name="arch" type="xml">
+                <form string="结算单">
+                    <header>
+                        <button name="btn_oder_line" string="结算明细" states='draft' type="object" class="oe_highlight"/>
+                        <button name="btn_done" string="结算完成" states='draft' type="object" class="oe_highlight"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,done" statusbar_colors='{"except_picking":"red","except_invoice":"red","confirm_contract":"red"}' readonly="1"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <label string="结算单"/>
+                                <field name="name" class="oe_inline" readonly="1"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <field name="purchase_id" required="True"/>
+                            <field name="partner_id" readonly="True"/>
+                            <field name="sale_id" readonly="True"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="tree_qdodoo_car_settlement" model="ir.ui.view">
+            <field name="name">qdodoo.car.settlement.tree</field>
+            <field name="model">qdodoo.car.settlement</field>
+            <field name="arch" type="xml">
+                <tree string="结算单">
+                    <field name="name"/>
+                    <field name="purchase_id"/>
+                    <field name="partner_id"/>
+                    <field name="sale_id"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+        <record id="action_qdodoo_car_settlement" model="ir.actions.act_window">
+            <field name="name">结算单</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">qdodoo.car.settlement</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="tree_qdodoo_car_settlement"/>
+        </record>
+        <menuitem name="结算单" action="action_qdodoo_car_settlement" id="menu_qdodoo_car_settlement" parent="menu_qdodoo_sale_manager" sequence="7"/>
+
+        <record id="tree_qdodoo_car_settlement_line" model="ir.ui.view">
+            <field name="name">qdodoo.car.settlement.line.tree</field>
+            <field name="model">qdodoo.car.settlement.line</field>
+            <field name="arch" type="xml">
+                <tree string="结算单明细">
+                    <field name="product_id"/>
+                    <field name="product_num"/>
+                    <field name="payment_money"/>
+                    <field name="no_payment_money"/>
+                    <field name="balance_money"/>
+                </tree>
+            </field>
+        </record>
+
+    </data>
+</openerp>

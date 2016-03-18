@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="tree_qdodoo_car_pledge_money" model="ir.ui.view">
+            <field name="name">qdodoo.car.sale.contract.pledge.tree</field>
+            <field name="model">qdodoo.car.sale.contract</field>
+            <field name="arch" type="xml">
+                <tree string="保证金">
+                    <field name="contract_num"/>
+                    <field name="date_order"/>
+                    <field name="partner_id"/>
+                    <field name="car_number"/>
+                    <field name="amount_total" sum="合计"/>
+                    <field name="pledge_money"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+        <record id="action_qdodoo_car_pledge_money" model="ir.actions.act_window">
+            <field name="name">保证金</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">qdodoo.car.sale.contract</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('is_issuing','=',False)]</field>
+            <field name="view_id" ref="tree_qdodoo_car_pledge_money"/>
+        </record>
+        <menuitem name="保证金" action="action_qdodoo_car_pledge_money" id="menu_qdodoo_car_pledge_money" parent="menu_qdodoo_sale_manager" sequence="1"/>
+
+    </data>
+</openerp>

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="form_qdodoo_car_information" model="ir.ui.view">
+            <field name="name">qdodoo.car.information.form</field>
+            <field name="model">qdodoo.car.information</field>
+            <field name="arch" type="xml">
+                <form string="车辆档案">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="product_num"/>
+                                <field name="product_id"/>
+                                <field name="sale_contract"/>
+                                <field name="price_unit"/>
+                                <field name="pledge_money"/>
+                                <field name="all_car_money"/>
+                                <field name="tax_price"/>
+                                <field name="settle_price"/>
+                                <field name="purchase_id"/>
+                                <field name="purchase_currency_id"/>
+                                <field name="purchase_price"/>
+                                <field name="issuing_id"/>
+                                <field name="issuing_money"/>
+                                <field name="currency_id"/>
+                                <field name="buy_exchange_rate"/>
+                                <field name="bill_id"/>
+                                <field name="source_location"/>
+                                <field name="dest_location"/>
+                                <field name="negotiation_sale_id"/>
+                                <field name="negotiation_exchange_rate"/>
+                                <field name="negotiation_date"/>
+                                <field name="negotiation_end_date"/>
+                                <field name="negotiation_interest"/>
+                                <field name="negotiation_exchange_rate"/>
+                                <field name="issuing_type"/>
+                            </group>
+                            <group>
+                                <field name="pad_id"/>
+                                <field name="pad_agent"/>
+                                <field name="tax_id"/>
+                                <field name="in_tax"/>
+                                <field name="in_sale_tax"/>
+                                <field name="in_add_tax"/>
+                                <field name="pad_money"/>
+                                <field name="pad_rate"/>
+                                <field name="pad_tax_date"/>
+                                <field name="pad_tax_end_date"/>
+                                <field name="pad_interest"/>
+                                <field name="inspection_price"/>
+                                <field name="commodity_money"/>
+                                <field name="product_money"/>
+                                <field name="stock_money"/>
+                                <field name="other_money"/>
+                                <field name="three_issure"/>
+                                <field name="ship_issure"/>
+                                <field name="agent_money"/>
+                                <field name="issuing_cost"/>
+                                <field name="customs_interest"/>
+                                <field name="delay_car_interest"/>
+                                <field name="open_box"/>
+                                <field name="in_stock"/>
+                                <field name="wait_take"/>
+                                <field name="done_date"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="tree_qdodoo_car_information" model="ir.ui.view">
+            <field name="name">qdodoo.car.information.tree</field>
+            <field name="model">qdodoo.car.information</field>
+            <field name="arch" type="xml">
+                <tree string="车辆档案">
+                    <field name="product_id"/>
+                    <field name="product_num"/>
+                </tree>
+            </field>
+        </record>
+        <record id="action_qdodoo_car_information" model="ir.actions.act_window">
+            <field name="name">车辆档案</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">qdodoo.car.information</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="tree_qdodoo_car_information"/>
+        </record>
+        <menuitem name="车辆档案" action="action_qdodoo_car_information" id="menu_qdodoo_car_information" parent="menu_qdodoo_information_manager" sequence="1"/>
+
+        <record id="tree_qdodoo_car_information_2" model="ir.ui.view">
+            <field name="name">qdodoo.car.information.tree2</field>
+            <field name="model">qdodoo.car.information</field>
+            <field name="arch" type="xml">
+                <tree string="开票金额明细" create="false" edit="false">
+                    <field name="product_id"/>
+                    <field name="product_num"/>
+                    <field name="issuing_money"/>
+                    <field name="currency_id"/>
+                    <field name="buy_exchange_rate"/>
+                    <field name="purchase_price"/>
+                    <field name="inspection_price"/>
+                    <field name="in_tax"/>
+                    <field name="in_sale_tax"/>
+                    <field name="commodity_money"/>
+                    <field name="product_money"/>
+                    <field name="stock_money"/>
+                    <field name="other_money"/>
+                    <field name="three_issure"/>
+                    <field name="ship_issure"/>
+                    <field name="one_total"/>
+                    <field name="agent_money"/>
+                    <field name="issuing_cost"/>
+                    <field name="customs_interest"/>
+                    <field name="delay_car_interest"/>
+                    <field name="in_add_tax"/>
+                    <field name="forwarding_add_tax"/>
+                    <field name="sale_tax"/>
+                    <field name="add_tax"/>
+                    <field name="all_total"/>
+                </tree>
+            </field>
+        </record>
+        <record id="action_qdodoo_car_information_2" model="ir.actions.act_window">
+            <field name="name">开票金额明细</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">qdodoo.car.information</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="tree_qdodoo_car_information_2"/>
+        </record>
+        <menuitem name="开票金额明细" action="action_qdodoo_car_information_2" id="menu_qdodoo_car_information_2" parent="menu_qdodoo_sale_manager" sequence="6"/>
+
+    </data>
+</openerp>

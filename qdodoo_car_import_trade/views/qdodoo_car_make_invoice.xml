@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="form_qdodoo_car_make_invoice" model="ir.ui.view">
+            <field name="name">qdodoo.car.make.invoice.form</field>
+            <field name="model">qdodoo.car.make.invoice</field>
+            <field name="arch" type="xml">
+                <form string="开票申请">
+                    <header>
+                        <button name="btn_doing" string="确认" type="object" states="draft" class="oe_highlight"/>
+                        <button name="btn_cancel" string="取消" type="object" states="draft" class="oe_highlight"/>
+                        <button name="btn_done" string="登记完成" type="object" states="doing" class="oe_highlight"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,doing,done" statusbar_colors='{"exception":"red","cancel":"red"}'/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <label string="开票申请"/>
+                                <field name="name" class="oe_inline" readonly="1"/>
+                            </h1>
+                        </div>
+                        <div class="oe_right oe_button_box" name="buttons">
+                            <button name="btn_car_information" icon="gtk-execute" string="金额明细" type="object"/>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="contract_id" attrs="{'required':True,'readonly':True}"/>
+                                <field name="invoice_type" attrs="{'required':True,'readonly':[('state','!=','draft')]}"/>
+                                <field name="partner_id" readonly="True"/>
+                                <field name="address" readonly="True"/>
+                                <field name="phone" readonly="True"/>
+                            </group>
+                            <group>
+                                <field name="tax_person_num" readonly="True"/>
+                                <field name="bank_id" readonly="True"/>
+                                <field name="account_id" readonly="True"/>
+                                <field name="bank_address" readonly="True"/>
+                                <field name="date" attrs="{'required':[('state','=','doing')],'readonly':[('state','=','done')]}"/>
+                                <field name="invoice_name" attrs="{'required':[('state','=','doing')],'readonly':[('state','=','done')]}"/>
+                            </group>
+                        </group>
+                        <field name="order_line" readonly="True">
+                            <tree editable="bottom" create="false">
+                                <field name="product_id"/>
+                                <field name="product_num"/>
+                                <field name="tax_price" sum="合计"/>
+                            </tree>
+                        </field>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="tree_qdodoo_car_make_invoice" model="ir.ui.view">
+            <field name="name">qdodoo.car.make.invoice.tree</field>
+            <field name="model">qdodoo.car.make.invoice</field>
+            <field name="arch" type="xml">
+                <tree string="开票申请">
+                    <field name="name"/>
+                    <field name="contract_id"/>
+                    <field name="partner_id"/>
+                    <field name="all_money"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+        <record id="action_qdodoo_car_make_invoice" model="ir.actions.act_window">
+            <field name="name">开票申请</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">qdodoo.car.make.invoice</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="tree_qdodoo_car_make_invoice"/>
+        </record>
+        <menuitem name="开票申请" action="action_qdodoo_car_make_invoice" id="menu_qdodoo_car_make_invoice" parent="menu_qdodoo_payment_manager" sequence="3"/>
+
+        <!--业务伙伴增加纳税人识别号-->
+        <record id="qdodoo_view_partner_form" model="ir.ui.view">
+            <field name="name">qdodoo.res.partner</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='website']" position="after">
+                    <field name="tax_person_num"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>

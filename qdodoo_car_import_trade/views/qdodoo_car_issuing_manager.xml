@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="form_qdodoo_car_issuing_manager" model="ir.ui.view">
+            <field name="name">qdodoo.car.issuing.manager.form</field>
+            <field name="model">qdodoo.car.issuing.manager</field>
+            <field name="arch" type="xml">
+                <form string="开证">
+                    <header>
+                        <field name="type" invisible="True"/>
+                        <button name="btn_doing" string="确认" type="object" states="draft" class="oe_highlight"/>
+                        <button name="btn_cancel" string="取消" type="object" states="draft" class="oe_highlight"/>
+                        <button name="btn_payment" string="保证金" type="object" attrs="{'invisible':['|',('type','!=','issuing'),('state','!=','doing')]}" class="oe_highlight"/>
+                        <!--<button name="btn_negotiation" string="结汇" type="object" attrs="{'invisible':['|',('type','!=','issuing'),('state','!=','doing')]}" class="oe_highlight"/>-->
+                        <!--<button name="btn_negotiation_done" string="结汇完成" type="object" attrs="{'invisible':['|',('type','!=','issuing'),('state','!=','doing')]}" class="oe_highlight"/>-->
+                        <button name="btn_payment_money" string="付款" type="object" attrs="{'invisible':['|',('type','!=','tt'),('state','!=','doing')]}" class="oe_highlight"/>
+                        <button name="btn_done" string="完成" type="object" attrs="{'invisible':['|',('type','!=','tt'),('state','!=','doing')]}" class="oe_highlight"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,doing,done" statusbar_colors='{"exception":"red","cancel":"red"}'/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <label string="开证" attrs="{'invisible':[('type','!=','issuing')]}"/>
+                                <label string="TT付款" attrs="{'invisible':[('type','!=','tt')]}"/>
+                                <field name="name" class="oe_inline" readonly="1"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="purchase_id" attrs="{'readonly':[('state','!=','draft')]}"/>
+                                <field name="payment_type" readonly="True" required="True"/>
+                                <field name="payment_rate" attrs="{'invisible':[('type','!=','tt')]}"/>
+                                <field name="issuing_num" attrs="{'invisible':[('type','!=','issuing')]}"/>
+                                <field name="issuing_type" attrs="{'required':[('type','=','issuing')],'readonly':[('state','!=','draft')],'invisible':[('type','!=','issuing')]}"/>
+                                <field name="partner_id" attrs="{'readonly':[('state','!=','draft')]}"/>
+                                <field name="partner_address" readonly="True"/>
+                                <field name="buy_rate" attrs="{'invisible':[('type','!=','tt')]}"/>
+                                <field name="currency_id" attrs="{'readonly':[('state','!=','draft')]}"/>
+                            </group>
+                            <group>
+                                <field name="issuing_date" attrs="{'required':[('state','!=','draft')]}"/>
+                                <field name="partner_bank" domain="[('partner_id','=',partner_id)]" attrs="{'readonly':[('state','!=','draft')],'required':True}"/>
+                                <field name="bank_account" readonly="True"/>
+                                <field name="bank_address" readonly="True"/>
+                                <field name="swifi_code" readonly="True"/>
+                                <field name="bank_partner" attrs="{'readonly':[('state','=','done')],'required':[('type','=','issuing'),('state','!=','draft')],'invisible':['|',('type','=','tt'),('state','=','draft')]}"/>
+                                <field name="issuing_payment_rate" attrs="{'readonly':[('state','=','done')],'required':[('type','=','issuing'),('state','!=','draft')],'invisible':[('type','=','tt')]}"/>
+                                <field name="issuing_pay_rate" attrs="{'required':[('state','=','doing')],'readonly':[('state','=','done')]}"/>
+                            </group>
+                        </group>
+                        <label string="车辆明细"/>
+                        <field name="order_line" attrs="{'readonly':[('type','=','tt')]}">
+                            <tree editable="bottom" create="false">
+                                <field name="product_id" readonly="True"/>
+                                <field name="product_qty" readonly="True"/>
+                                <field name="price_unit"/>
+                                <field name="all_money" sum="合计"/>
+                            </tree>
+                        </field>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="tree_qdodoo_car_issuing_manager" model="ir.ui.view">
+            <field name="name">qdodoo.car.issuing.manager.tree</field>
+            <field name="model">qdodoo.car.issuing.manager</field>
+            <field name="arch" type="xml">
+                <tree string="开证">
+                    <field name="purchase_id"/>
+                    <field name="partner_id"/>
+                    <field name="issuing_date"/>
+                    <field name="issuing_money"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+        <record id="action_qdodoo_car_issuing_manager" model="ir.actions.act_window">
+            <field name="name">开证</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">qdodoo.car.issuing.manager</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('type','=','issuing')]</field>
+            <field name="view_id" ref="tree_qdodoo_car_issuing_manager"/>
+        </record>
+        <record id="action_qdodoo_car_issuing_manager_tt" model="ir.actions.act_window">
+            <field name="name">TT付款</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">qdodoo.car.issuing.manager</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('type','=','tt')]</field>
+            <field name="view_id" ref="tree_qdodoo_car_issuing_manager"/>
+        </record>
+        <menuitem name="开证" action="action_qdodoo_car_issuing_manager" id="menu_qdodoo_car_issuing_manager" parent="menu_qdodoo_credit_manager" sequence="1"/>
+        <menuitem name="TT" action="action_qdodoo_car_issuing_manager_tt" id="menu_qdodoo_car_issuing_manager_tt" parent="menu_qdodoo_credit_manager" sequence="3"/>
+
+    </data>
+</openerp>

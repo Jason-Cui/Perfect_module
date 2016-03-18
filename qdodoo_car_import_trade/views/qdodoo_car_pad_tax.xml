@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="view_form_qdodoo_car_pad_tax" model="ir.ui.view">
+            <field name="name">qdodoo.car.pad.tax.form</field>
+            <field name="model">qdodoo.car.pad.tax</field>
+            <field name="arch" type="xml">
+                <form string="垫税">
+                    <header>
+                        <button name="btn_doing" string="确认" type="object" states="draft" class="oe_highlight"/>
+                        <button name="btn_cancel" string="取消" type="object" states="draft" class="oe_highlight"/>
+                        <button name="btn_done" string="登账" type="object" states="doing" class="oe_highlight"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,doing,done" statusbar_colors='{"exception":"red","cancel":"red"}'/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <label string="垫税"/>
+                                <field name="name" class="oe_inline" readonly="1"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <field name="purchase_id" attrs="{'required':True}"/>
+                            <!--<field name="bill_id" attrs="{'required':True}" domian="[('purchase_id','=',purchase_id)]"/>-->
+                        </group>
+                        <field name="order_line">
+                            <tree editable="bottom" create="false">
+                                <field name="product_id" readonly="True"/>
+                                <field name="product_num" readonly="True"/>
+                                <field name="pad_agent"/>
+                                <field name="tax_id"/>
+                                <field name="in_tax"/>
+                                <field name="in_sale_tax"/>
+                                <field name="add_tax"/>
+                                <field name="delayed_moeny"/>
+                                <field name="in_issuing_money"/>
+                                <field name="pad_money"/>
+                                <field name="pad_tax_date"/>
+                                <field name="pad_tax_end_date"/>
+                                <field name="note"/>
+                            </tree>
+                        </field>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="view_tree_qdodoo_car_pad_tax" model="ir.ui.view">
+            <field name="name">qdodoo.car.pad.tax.tree</field>
+            <field name="model">qdodoo.car.pad.tax</field>
+            <field name="arch" type="xml">
+                <tree string="垫税">
+                    <field name="name"/>
+                    <field name="purchase_id"/>
+                    <field name="date"/>
+                    <field name="car_number"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+        <record id="action_qdodoo_car_pad_tax_new" model="ir.actions.act_window">
+            <field name="name">垫税</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">qdodoo.car.pad.tax</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_tree_qdodoo_car_pad_tax"/>
+        </record>
+        <menuitem name="垫税" action="action_qdodoo_car_pad_tax_new" id="menu_qdodoo_car_pad_tax_new" parent="menu_qdodoo_sale_manager" sequence="3"/>
+
+    </data>
+</openerp>

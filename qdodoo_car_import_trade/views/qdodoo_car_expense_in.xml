@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="form_qdodoo_car_expense_in" model="ir.ui.view">
+            <field name="name">qdodoo.car.expense.in.form</field>
+            <field name="model">qdodoo.car.expense.in</field>
+            <field name="arch" type="xml">
+                <form string="费用录入">
+                    <header>
+                        <button name="btn_doing" string="确认" type="object" states="draft" class="oe_highlight"/>
+                        <button name="btn_cancel" string="取消" type="object" states="draft" class="oe_highlight"/>
+                        <button name="btn_payment" string="付款" type="object" states="doing" class="oe_highlight"/>
+                        <button name="btn_return" string="驳回" type="object" states="doing" class="oe_highlight"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,doing,done" statusbar_colors='{"exception":"red","cancel":"red"}'/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <label string="费用单"/>
+                                <field name="name" class="oe_inline" readonly="1"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="partner_id" readonly="True"/>
+                                <field name="partner_num" attrs="{'readonly':[('state','!=','draft')]}"/>
+                                <field name="currency_id" readonly="True"/>
+                            </group>
+                            <group>
+                                <field name="date_order" attrs="{'readonly':[('state','!=','draft')],'required':True}"/>
+                                <field name="expense_id" attrs="{'readonly':[('state','!=','draft')],'required':True}"/>
+                                <field name="purchase_id" readonly="True"/>
+                            </group>
+                        </group>
+                        <label string="车辆明细"/>
+                        <field name="order_line" attrs="{'readonly':[('state','!=','draft')]}">
+                            <tree editable="bottom" create="false">
+                                <field name="product_num"/>
+                                <field name="product_id" readonly="True"/>
+                                <field name="product_price" sum="合计"/>
+                                <field name="tax_rate"/>
+                                <field name="tax_money" sum="合计"/>
+                            </tree>
+                        </field>
+                        <group class="oe_subtotal_footer oe_right" colspan="2" name="all_total">
+                            <field name="all_total" class="oe_subtotal_footer_separator" widget='monetary' options="{'currency_field': 'currency_id'}"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="tree_qdodoo_car_expense_in" model="ir.ui.view">
+            <field name="name">qdodoo.car.expense.in.tree</field>
+            <field name="model">qdodoo.car.expense.in</field>
+            <field name="arch" type="xml">
+                <tree string="费用录入">
+                    <field name="name"/>
+                    <field name="purchase_id"/>
+                    <field name="date_order"/>
+                    <field name="partner_id"/>
+                    <field name="expense_id"/>
+                    <field name="currency_id"/>
+                    <field name="all_total"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+        <record id="action_qdodoo_car_expense_in_order" model="ir.actions.act_window">
+            <field name="name">费用录入</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">qdodoo.car.expense.in</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="tree_qdodoo_car_expense_in"/>
+        </record>
+        <menuitem name="费用按单号录入" action="action_qdodoo_car_expense_in_order" id="menu_qdodoo_car_expense_in_order" parent="menu_qdodoo_logistics_manager" sequence="2"/>
+
+        <record id="form_qdodoo_car_expense_in_car" model="ir.ui.view">
+            <field name="name">qdodoo.car.expense.in.car.form</field>
+            <field name="model">qdodoo.car.expense.in.car</field>
+            <field name="arch" type="xml">
+                <form string="费用录入">
+                    <header>
+                        <button name="btn_doing" string="确认" type="object" states="draft" class="oe_highlight"/>
+                        <button name="btn_cancel" string="取消" type="object" states="draft" class="oe_highlight"/>
+                        <button name="btn_payment" string="付款" type="object" states="doing" class="oe_highlight"/>
+                        <button name="btn_return" string="驳回" type="object" states="doing" class="oe_highlight"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,doing,done" statusbar_colors='{"exception":"red","cancel":"red"}'/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <label string="费用单"/>
+                                <field name="name" class="oe_inline" readonly="1"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="partner_id" invisible="True"/>
+                                <field name="partner_num" invisible="True"/>
+                                <field name="currency_id" readonly="True"/>
+                            </group>
+                            <group>
+                                <field name="date_order" attrs="{'readonly':[('state','!=','draft')],'required':True}"/>
+                                <field name="expense_id" attrs="{'readonly':[('state','!=','draft')],'required':True}"/>
+                                <field name="purchase_id" readonly="True"/>
+                            </group>
+                        </group>
+                        <label string="明细"/>
+                        <field name="order_line" domain="[('type','in',context.get('type',('translation','receivable','old_receivable','payable')))]" attrs="{'readonly':[('state','!=','draft')]}">
+                            <tree editable="bottom">
+                                <field name="product_num" required="True"/>
+                                <field name="product_price" sum="合计"/>
+                            </tree>
+                        </field>
+                        <group class="oe_subtotal_footer oe_right" colspan="2" name="all_total">
+                            <field name="all_total" class="oe_subtotal_footer_separator" widget='monetary' options="{'currency_field': 'currency_id'}"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="tree_qdodoo_car_expense_in_car" model="ir.ui.view">
+            <field name="name">qdodoo.car.expense.in.car.tree</field>
+            <field name="model">qdodoo.car.expense.in.car</field>
+            <field name="arch" type="xml">
+                <tree string="费用录入">
+                    <field name="name"/>
+                    <field name="purchase_id"/>
+                    <field name="date_order"/>
+                    <field name="partner_id"/>
+                    <field name="expense_id"/>
+                    <field name="currency_id"/>
+                    <field name="all_total"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+        <record id="action_qdodoo_car_expense_in_car" model="ir.actions.act_window">
+            <field name="name">费用录入</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">qdodoo.car.expense.in.car</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="tree_qdodoo_car_expense_in_car"/>
+        </record>
+        <menuitem name="费用按车辆录入" action="action_qdodoo_car_expense_in_car" id="menu_qdodoo_car_expense_in_car" parent="menu_qdodoo_logistics_manager" sequence="3"/>
+
+    </data>
+</openerp>

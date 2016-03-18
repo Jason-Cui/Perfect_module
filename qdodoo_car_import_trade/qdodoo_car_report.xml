@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <report
+            id="report_sale_contract_id"
+            string="打印汽车销售合同"
+            model="qdodoo.car.sale.contract"
+            report_type="qweb-pdf"
+            file="qdodoo_car_import_trade.report_sale_contract"
+            name="qdodoo_car_import_trade.report_sale_contract"
+        />
+        <report
+            id="report_purchase_contract_id"
+            string="打印汽车外贸合同"
+            model="qdodoo.car.purchase.contract"
+            report_type="qweb-pdf"
+            file="qdodoo_car_import_trade.report_purchase_contract"
+            name="qdodoo_car_import_trade.report_purchase_contract"
+        />
+        <report
+            id="report_car_make_invoice_id"
+            string="打印发票申请单"
+            model="qdodoo.car.make.invoice"
+            report_type="qweb-pdf"
+            file="qdodoo_car_import_trade.report_car_make_invoice"
+            name="qdodoo_car_import_trade.report_car_make_invoice"
+        />
+        <report
+            id="report_purchase_contract_workflow_id"
+            string="合同审核流转单"
+            model="qdodoo.car.purchase.contract"
+            report_type="qweb-pdf"
+            file="qdodoo_car_import_trade.report_purchase_contract_workflow"
+            name="qdodoo_car_import_trade.report_purchase_contract_workflow"
+        />
+        <report
+            id="report_payment_order_id"
+            string="付款审批表"
+            model="qdodoo.car.payment.order"
+            report_type="qweb-html"
+            file="qdodoo_car_import_trade.report_payment_order"
+            name="qdodoo_car_import_trade.report_payment_order"
+        />
+    </data>
+</openerp>

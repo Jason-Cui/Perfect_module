@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="0">
+        <record id="seq_type_qdodoo_car_sale_contract" model="ir.sequence.type">
+            <field name="name">销售合同</field>
+            <field name="code">qdodoo.car.sale.contract</field>
+        </record>
+        <record id="seq_qdodoo_car_sale_contract" model="ir.sequence">
+            <field name="name">销售合同</field>
+            <field name="code">qdodoo.car.sale.contract</field>
+            <field name="prefix">XS</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="seq_type_qdodoo_car_payment_order" model="ir.sequence.type">
+            <field name="name">收款通知</field>
+            <field name="code">qdodoo.car.payment.order</field>
+        </record>
+        <record id="seq_qdodoo_car_payment_order" model="ir.sequence">
+            <field name="name">收款通知</field>
+            <field name="code">qdodoo.car.payment.order</field>
+            <field name="prefix">TZ</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="seq_type_qdodoo_car_purchase_contract" model="ir.sequence.type">
+            <field name="name">外贸合同</field>
+            <field name="code">qdodoo.car.purchase.contract</field>
+        </record>
+        <record id="seq_qdodoo_car_purchase_contract" model="ir.sequence">
+            <field name="name">外贸合同</field>
+            <field name="code">qdodoo.car.purchase.contract</field>
+            <field name="prefix">WM</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="seq_type_qdodoo_car_issuing_manager" model="ir.sequence.type">
+            <field name="name">开证</field>
+            <field name="code">qdodoo.car.issuing.manager</field>
+        </record>
+        <record id="seq_qdodoo_car_issuing_manager" model="ir.sequence">
+            <field name="name">开证</field>
+            <field name="code">qdodoo.car.issuing.manager</field>
+            <field name="prefix">KZ</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="seq_type_qdodoo_redeem_car_line" model="ir.sequence.type">
+            <field name="name">押汇申请</field>
+            <field name="code">qdodoo.car.negotiation.manager</field>
+        </record>
+        <record id="seq_qdodoo_redeem_car_line" model="ir.sequence">
+            <field name="name">押汇申请</field>
+            <field name="code">qdodoo.car.negotiation.manager</field>
+            <field name="prefix">SC</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="seq_type_qdodoo_car_bill_lading" model="ir.sequence.type">
+            <field name="name">提单</field>
+            <field name="code">qdodoo.car.bill.lading</field>
+        </record>
+        <record id="seq_qdodoo_car_bill_lading" model="ir.sequence">
+            <field name="name">提单</field>
+            <field name="code">qdodoo.car.bill.lading</field>
+            <field name="prefix">TD</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="seq_type_qdodoo_car_expense_in" model="ir.sequence.type">
+            <field name="name">费用登录</field>
+            <field name="code">qdodoo.car.expense.in</field>
+        </record>
+        <record id="seq_qdodoo_car_expense_in" model="ir.sequence">
+            <field name="name">费用登录</field>
+            <field name="code">qdodoo.car.expense.in</field>
+            <field name="prefix">FY</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="seq_type_qdodoo_car_redeem_manager" model="ir.sequence.type">
+            <field name="name">提车款</field>
+            <field name="code">qdodoo.car.redeem.manager</field>
+        </record>
+        <record id="seq_qdodoo_car_redeem_manager" model="ir.sequence">
+            <field name="name">提车款</field>
+            <field name="code">qdodoo.car.redeem.manager</field>
+            <field name="prefix">TC</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="seq_type_qdodoo_car_pad_tax" model="ir.sequence.type">
+            <field name="name">垫税登记</field>
+            <field name="code">qdodoo.car.pad.tax</field>
+        </record>
+        <record id="seq_qdodoo_car_pad_tax" model="ir.sequence">
+            <field name="name">垫税登记</field>
+            <field name="code">qdodoo.car.pad.tax</field>
+            <field name="prefix">DS</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="seq_type_qdodoo_car_make_invoice" model="ir.sequence.type">
+            <field name="name">开票申请</field>
+            <field name="code">qdodoo.car.make.invoice</field>
+        </record>
+        <record id="seq_qdodoo_car_make_invoice" model="ir.sequence">
+            <field name="name">开票申请</field>
+            <field name="code">qdodoo.car.make.invoice</field>
+            <field name="prefix">KP</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="seq_type_qdodoo_car_margin_money" model="ir.sequence.type">
+            <field name="name">二次保证金</field>
+            <field name="code">qdodoo.car.margin.money</field>
+        </record>
+        <record id="seq_qdodoo_car_margin_money" model="ir.sequence">
+            <field name="name">二次保证金</field>
+            <field name="code">qdodoo.car.margin.money</field>
+            <field name="prefix">BZJ</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="seq_type_qdodoo_car_carry_money" model="ir.sequence.type">
+            <field name="name">提车款</field>
+            <field name="code">qdodoo.car.carry.money</field>
+        </record>
+        <record id="seq_qdodoo_car_carry_money" model="ir.sequence">
+            <field name="name">提车款</field>
+            <field name="code">qdodoo.car.carry.money</field>
+            <field name="prefix">TCK</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="seq_type_qdodoo_car_settlement" model="ir.sequence.type">
+            <field name="name">结算单</field>
+            <field name="code">qdodoo.car.settlement</field>
+        </record>
+        <record id="seq_qdodoo_car_settlement" model="ir.sequence">
+            <field name="name">结算单</field>
+            <field name="code">qdodoo.car.settlement</field>
+            <field name="prefix">JSD</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+    </data>
+</openerp>

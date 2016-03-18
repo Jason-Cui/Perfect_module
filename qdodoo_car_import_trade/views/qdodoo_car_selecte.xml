@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="form_qdodoo_car_state" model="ir.ui.view">
+            <field name="name">qdodoo.car.state.form</field>
+            <field name="model">qdodoo.car.information</field>
+            <field name="arch" type="xml">
+                <form string="车辆档案">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="product_num"/>
+                                <field name="product_id"/>
+                                <field name="sale_contract"/>
+                                <field name="contract_date"/>
+                                <field name="purchase_id"/>
+                                <field name="purchase_date"/>
+                                <field name="issuing_date"/>
+                                <field name="source_location"/>
+                            </group>
+                            <group>
+                                <field name="bill_id"/>
+                                <field name="out_ship"/>
+                                <field name="in_ship"/>
+                                <field name="open_box"/>
+                                <field name="in_stock"/>
+                                <field name="out_stock"/>
+                                <field name="wait_take"/>
+                                <field name="dest_location"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="tree_qdodoo_car_state" model="ir.ui.view">
+            <field name="name">qdodoo.car.state.tree</field>
+            <field name="model">qdodoo.car.information</field>
+            <field name="arch" type="xml">
+                <tree string="车辆档案">
+                    <field name="product_num"/>
+                    <field name="product_id"/>
+                    <field name="sale_contract"/>
+                    <field name="purchase_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_qdodoo_car_state" model="ir.actions.act_window">
+            <field name="name">车辆档案</field>
+            <field name="res_model">qdodoo.car.information</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <record id="action_tree_qdodoo_car_state" model="ir.actions.act_window.view">
+            <field eval="1" name="sequence"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="tree_qdodoo_car_state"/>
+            <field name="act_window_id" ref="action_qdodoo_car_state"/>
+        </record>
+        <record id="action_form_qdodoo_car_state" model="ir.actions.act_window.view">
+            <field eval="2" name="sequence"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="form_qdodoo_car_state"/>
+            <field name="act_window_id" ref="action_qdodoo_car_state"/>
+        </record>
+        <menuitem name="车辆状态查询" action="action_qdodoo_car_state" id="menu_qdodoo_car_state" parent="menu_qdodoo_select_manager" sequence="3"/>
+
+        <record id="tree_qdodoo_car_negotiation" model="ir.ui.view">
+            <field name="name">qdodoo.car.negotiation.tree</field>
+            <field name="model">qdodoo.car.information</field>
+            <field name="arch" type="xml">
+                <tree string="押汇查询">
+                    <field name="partner_id"/>
+                    <field name="sale_contract"/>
+                    <field name="product_id"/>
+                    <field name="product_num"/>
+                    <field name="negotiation_date"/>
+                    <field name="negotiation_end_date"/>
+                    <field name="negotiation_interest"/>
+                </tree>
+            </field>
+        </record>
+        <record id="action_qdodoo_car_negotiation" model="ir.actions.act_window">
+            <field name="name">押汇查询</field>
+            <field name="res_model">qdodoo.car.information</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree</field>
+        </record>
+        <record id="action_tree_qdodoo_car_negotiation" model="ir.actions.act_window.view">
+            <field eval="1" name="sequence"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="tree_qdodoo_car_negotiation"/>
+            <field name="act_window_id" ref="action_qdodoo_car_negotiation"/>
+        </record>
+        <menuitem name="银行押汇查询" action="action_qdodoo_car_negotiation" id="menu_qdodoo_car_negotiation" parent="menu_qdodoo_select_manager" sequence="4"/>
+
+        <record id="tree_qdodoo_car_negotiation_sale" model="ir.ui.view">
+            <field name="name">qdodoo.car.negotiation.tree</field>
+            <field name="model">qdodoo.car.information</field>
+            <field name="arch" type="xml">
+                <tree string="客户押汇查询">
+                    <field name="partner_id"/>
+                    <field name="sale_contract"/>
+                    <field name="product_id"/>
+                    <field name="product_num"/>
+                    <field name="negotiation_date"/>
+                    <field name="negotiation_end_date"/>
+                    <field name="negotiation_sale_interest"/>
+                </tree>
+            </field>
+        </record>
+        <record id="action_qdodoo_car_negotiation_sale" model="ir.actions.act_window">
+            <field name="name">客户押汇查询</field>
+            <field name="res_model">qdodoo.car.information</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree</field>
+        </record>
+        <record id="action_tree_qdodoo_car_negotiation_sale" model="ir.actions.act_window.view">
+            <field eval="1" name="sequence"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="tree_qdodoo_car_negotiation_sale"/>
+            <field name="act_window_id" ref="action_qdodoo_car_negotiation_sale"/>
+        </record>
+        <menuitem name="客户押汇查询" action="action_qdodoo_car_negotiation_sale" id="menu_qdodoo_car_negotiation_sale" parent="menu_qdodoo_select_manager" sequence="5"/>
+
+        <record id="tree_qdodoo_car_pad_tax" model="ir.ui.view">
+            <field name="name">qdodoo.car.pad.tax.tree</field>
+            <field name="model">qdodoo.car.information</field>
+            <field name="arch" type="xml">
+                <tree string="垫税查询">
+                    <field name="partner_id"/>
+                    <field name="purchase_id"/>
+                    <field name="product_id"/>
+                    <field name="product_num"/>
+                    <field name="pad_tax_date"/>
+                    <field name="pad_tax_end_date"/>
+                    <field name="pad_money"/>
+                    <field name="pad_interest"/>
+                </tree>
+            </field>
+        </record>
+        <record id="action_qdodoo_car_pad_tax" model="ir.actions.act_window">
+            <field name="name">垫税查询</field>
+            <field name="res_model">qdodoo.car.information</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree</field>
+        </record>
+        <record id="action_tree_qdodoo_car_pad_tax" model="ir.actions.act_window.view">
+            <field eval="1" name="sequence"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="tree_qdodoo_car_pad_tax"/>
+            <field name="act_window_id" ref="action_qdodoo_car_pad_tax"/>
+        </record>
+        <menuitem name="垫税查询" action="action_qdodoo_car_pad_tax" id="menu_qdodoo_car_pad_tax" parent="menu_qdodoo_select_manager" sequence="6"/>
+
+        <record id="tree_qdodoo_car_selecte" model="ir.ui.view">
+            <field name="name">qdodoo.car.selecte.tree</field>
+            <field name="model">qdodoo.car.selecte</field>
+            <field name="arch" type="xml">
+                <form string="运营报表">
+                    <header>
+                        <button name="but_search_date" type="object" string="查询"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="start_date"/>
+                            </group>
+                            <group>
+                                <field name="end_date"/>
+                            </group>
+                        </group>
+                        <field name="order_line" readonly="True">
+                            <tree>
+                                <field name="over_issuing"/>
+                                <field name="issuing_money"/>
+                                <field name="issuing_payment_money"/>
+                                <field name="issuing_car_number"/>
+                                <field name="in_port_number"/>
+                                <field name="bill_car_number"/>
+                                <field name="invoice_money"/>
+                            </tree>
+                        </field>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="action_qdodoo_car_selecte" model="ir.actions.act_window">
+            <field name="name">运营报表</field>
+            <field name="res_model">qdodoo.car.selecte</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+        </record>
+        <menuitem name="运营报表" action="action_qdodoo_car_selecte" id="menu_qdodoo_car_selecte" parent="menu_qdodoo_select_manager" sequence="1"/>
+
+        <record id="tree_qdodoo_car_selecte_stock" model="ir.ui.view">
+            <field name="name">qdodoo.car.select.stock.tree</field>
+            <field name="model">qdodoo.car.information</field>
+            <field name="arch" type="xml">
+                <tree string="库存查询">
+                    <field name="product_num"/>
+                    <field name="dest_location"/>
+                </tree>
+            </field>
+        </record>
+        <record id="view_qdodoo_car_selecte_stock_filter" model="ir.ui.view">
+            <field name="name">qdodoo.car.information.search</field>
+            <field name="model">qdodoo.car.information</field>
+            <field name="arch" type="xml">
+                <search string="库存查询">
+                   <group expand="0" string="Group By">
+                        <filter string="库位" name="dest_location" icon="terp-stock_effects-object-colorize" domain="[]" context="{'group_by' : 'dest_location'}" />
+                    </group>
+                </search>
+            </field>
+        </record>
+        <record id="action_qdodoo_car_selecte_stock" model="ir.actions.act_window">
+            <field name="name">库存查询</field>
+            <field name="res_model">qdodoo.car.information</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree</field>
+            <field name="context">{'search_default_dest_location':1}</field>
+            <field name="search_view_id" ref="view_qdodoo_car_selecte_stock_filter"/>
+        </record>
+        <record id="action_tree_qdodoo_car_selecte_stock" model="ir.actions.act_window.view">
+            <field eval="1" name="sequence"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="tree_qdodoo_car_selecte_stock"/>
+            <field name="act_window_id" ref="action_qdodoo_car_selecte_stock"/>
+        </record>
+        <menuitem name="库存查询" action="action_qdodoo_car_selecte_stock" id="menu_qdodoo_car_selecte_stock" parent="menu_qdodoo_select_manager" sequence="2"/>
+
+    </data>
+</openerp>

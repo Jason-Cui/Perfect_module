@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+<template id="report_sale_contract_document">
+    <!--<t t-call="report.external_layout">-->
+    <t>
+        <div class="page">
+            <div class="oe_structure"/>
+            <div class="row">
+                <div class="text-center">
+                    <h1><strong>汽车销售合同</strong></h1>
+                </div>
+                <div class="text-right">
+                    <p>编号:<span t-esc="o.contract_num"/></p>
+                </div>
+                <div class="text-left">
+                    <p>签订地:青岛黄岛区</p>
+                </div>
+                <div class="text-left">
+                    <p>甲方:<span t-esc="o.partner_id.company_id.name"/></p>
+                </div>
+                <div class="text-left">
+                    <p>办公地址:<span t-esc="o.partner_id.company_id.city"/><span t-esc="o.partner_id.company_id.street2"/><span t-esc="o.partner_id.company_id.street"/></p>
+                </div>
+                <div class="text-left">
+                    <p>联系人:张霞        电话：18153219166</p>
+                </div>
+                <div class="text-left">
+                    <p>乙方:<span t-esc="o.partner_id.name"/></p>
+                </div>
+                <div class="text-left">
+                    <p>办公地址:<span t-esc="o.partner_id.city"/><span t-esc="o.partner_id.street2"/><span t-esc="o.partner_id.street"/></p>
+                </div>
+                <div class="text-left">
+                    <p><span>联系人:______________      电话：</span></p>
+                </div>
+                <div>
+                    <p><span>甲乙双方本着平等互利，诚实守信的原则，根据中国相关法律、法规及贸易惯例的规定，就进口汽车销售有关事宜，经双方友好协商，达成一致，签订本汽车销售合同条款如下，各方承诺照约授信执行。</span></p>
+                </div>
+                <div>
+                    <p><span>第一条：车辆的信息及价格</span></p>
+                </div>
+                <table class="table table-condensed">
+                    <thead>
+                        <tr>
+                            <th class="text-center"><strong>品名、型号</strong></th>
+                            <th class="text-right"><strong>单车车价</strong></th>
+                            <th class="text-right"><strong>单车税费</strong></th>
+                            <th class="text-right"><strong>数量</strong></th>
+                            <th class="text-right"><strong>总价款</strong></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr t-foreach="o.order_line" t-as="order_line">
+                            <td>
+                                <span t-field="order_line.product_id.name"/>
+                            </td>
+                            <td class="text-right">
+                                <span t-field="order_line.price_unit"/>
+                            </td>
+                            <td class="text-right">
+                                <span t-field="order_line.tax_money"/>
+                            </td>
+                            <td class="text-right">
+                                <span t-field="order_line.product_qty"/>
+                            </td>
+                            <td class="text-right">
+                                <span t-field="order_line.all_money"/>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="row">
+                    <div class="col-xs-4 pull-right">
+                        <table class="table table-condensed">
+                            <tr class="border-black">
+                                <td><strong>合计：</strong></td>
+                                <td class="text-right">
+                                    <span t-field="o.amount_total"/>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div>
+                    <p><span>注：因进口汽车海关核定价格的调整及汇率变动等因素，最终价格以甲方开具的发票为准。</span></p>
+                    <p><span>甲方进口的车辆，乙方承诺对该进口的车辆所涉及的相关事项已全部了解，准确无误，并确认购买本合同下的全部产品。</span></p>
+                    <p><span>第二条：付款方式。</span></p>
+                    <p>（一）、签署本合同5个工作日内，乙方向甲方支付裸车车款的<span t-esc="o.deposit_rate"/>%作为定金，总计人民币：<span t-esc="o.amount_total"/> 元。</p>
+                    <p>（二）、在本合同签订<span t-esc="o.dalay_date"/> 日内，乙方向甲方支付剩余全部车款。若乙方不能按期支付，经甲方同意延期期间按照（美金年化4.5%，人民币年化<span t-esc="o.dalay_rate"/>%）向甲方支付资金费用。</p>
+                    <p><span>第三条：交车时间、地点。</span></p>
+                    <p><span>（一）、甲方应乙方交付定金后60个工作日内，将车辆进口至交车地，并达到交车状态。</span></p>
+                    <p><span>（二）、交车地点：青岛。</span></p>
+                    <p><span>第四条：车辆质量</span></p>
+                    <p><span>1、车辆质量和性能以生产厂家提供的车辆信息清单等出厂证书为准。</span></p>
+                    <p><span>2、双方对车辆质量认定有争议的，以国家汽车质量监督检验部门的书面鉴定意见为处理依据。</span></p>
+                    <p><span>（一）、因厂家生产计划或者车辆运输方面原因致使甲方不能按合同要求交付车辆，甲方不承担违约责任</span></p>
+                    <p><span>（二）、因国家相关政策的调整致使车辆不能入境或者通关延迟导致甲方不能按合同要求交付车辆，甲方不承担违约责任</span></p>
+                    <p><span>（三）甲方向乙方收取的定金，若乙方不能按期支付后续车款，且双方付款期限未能达成一致，或虽达成一致但延期60日内仍未支付剩余车款，甲方可以单方面解除合同，且定金不予以返还。</span></p>
+                    <p><span>（四）车辆通关结束达到交付状态，乙方支付全部车款7个 工作日后，因甲方原因不能交付车辆，乙方可以单方面解除本合同，甲方返还乙方定金，并按年化10%向乙方支付利息。</span></p>
+                    <p><span>第六条：车辆的交付</span></p>
+                    <p><span>（一）乙方在本合同约定期限内向甲方支付完费用后方可提车。</span></p>
+                    <p><span>（二）自乙方在《车辆交接单》签字确认时起，为甲方向乙方交付了本协议中的车辆。</span></p>
+                    <p><span>（三）甲方在车辆交付10个工作日内向乙方提供海关货物进口证明书、商检随车检验单、车辆一致性证书等通关文件。</span></p>
+                    <p><span>第七条：纠纷的解决</span></p>
+                    <p><span>甲方与乙方在履行本协议产生纠纷时，共同协商解决，协商不成时，双方同意向甲方住所地人民法院提起诉讼解决。</span></p>
+                    <p><span>第八条：附则</span></p>
+                    <p><span>（一）本协议标明的地址为双方法定通知地址，任何一方地址变更，应以书面形式送达另一方，无论对方签收与否，通知到达日期均以发出信函后第3日视为双方已收悉。变更地址没有书面通知另一方的，原标明的地址为法定通知地址</span></p>
+                    <p><span>（二）本协议一式肆份，自双方盖章后生效，双方各执两份。依据本协议书双方以传真件往来签订的与本业务有关的传真件文件作为本协议的附件部分，具有同等效力。</span></p>
+                    <p><span>（三）本协议如有未尽事宜，双方另行签订补充协议。</span></p>
+                </div>
+                <br/>
+                <br/>
+                <br/>
+                <div class="col-xs-5 col-xs-offset-1 text-left">
+                    <p>甲方:</p>
+                </div>
+                <div class="col-xs-5 col-xs-offset-1 text-left">
+                    <p>乙方:</p>
+                </div>
+                <br/>
+                <br/>
+                <div class="col-xs-5 col-xs-offset-1 text-left">
+                    <p>签章</p>
+                </div>
+                <div class="col-xs-5 col-xs-offset-1 text-left">
+                    <p>签章</p>
+                </div>
+                <br/>
+                <br/>
+                <div class="col-xs-5 col-xs-offset-1 text-left">
+                    <p>签约时间：</p>
+                </div>
+
+            </div>
+        </div>
+    </t>
+</template>
+
+<template id="report_sale_contract">
+    <t t-call="report.html_container">
+        <t t-foreach="doc_ids" t-as="doc_id">
+            <t t-raw="translate_doc(doc_id, doc_model, 'partner_id.lang', 'qdodoo_car_import_trade.report_sale_contract_document')"/>
+        </t>
+    </t>
+</template>
+</data>
+</openerp>

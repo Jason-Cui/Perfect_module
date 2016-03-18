@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="form_qdodoo_car_payment_order" model="ir.ui.view">
+            <field name="name">qdodoo.car.payment.order.form</field>
+            <field name="model">qdodoo.car.payment.order</field>
+            <field name="arch" type="xml">
+                <form string="收款通知">
+                    <header>
+                        <button name="btn_pay" string="确认" type="object" states="draft" class="oe_highlight"/>
+                        <button name="btn_done" string="确认" type="object" states="pay" class="oe_highlight"/>
+                        <button name="btn_draft" string="返回" type="object" states="pay" class="oe_highlight"/>
+                        <button name="btn_cancel" string="取消" type="object" states="draft,pay" class="oe_highlight"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,pay,done" statusbar_colors='{"exception":"red","cancel":"red"}'/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="type" invisible="True"/>
+                                <label string="收款通知" attrs="{'invisible':[('type','!=','collection')]}"/>
+                                <label string="付款申请" attrs="{'invisible':[('type','!=','payment')]}"/>
+                                <field name="name" class="oe_inline" readonly="1"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="partner_id" attrs="{'required':True,'readonly':[('state','!=','draft')]}"/>
+                                <field name="contract_id" attrs="{'invisible':[('type','!=','collection')]}"/>
+                                <field name="purchase_id" attrs="{'invisible':[('type','!=','payment')]}"/>
+                                <field name="pay_project" domain="[('expense_type','in',('receivable','old_receivable'))]" attrs="{'invisible':[('type','!=','collection')],'required':[('type','=','collection')],'readonly':[('state','!=','draft')]}"/>
+                                <field name="pay_project_2" domain="[('expense_type','=','payable')]" attrs="{'invisible':[('type','!=','payment')],'required':[('type','=','payment')],'readonly':[('state','!=','draft')]}"/>
+                            </group>
+                            <group>
+                                <field name="company_partner" invisible="True"/>
+                                <field name="date_done" attrs="{'readonly':[('state','=','done')]}"/>
+                                <field name="bank_id" attrs="{'invisible':[('type','!=','collection')],'readonly':[('state','=','done')]}" domain="[('partner_id','=',company_partner)]"/>
+                                <field name="bank_id_2" attrs="{'invisible':[('type','!=','payment')],'readonly':[('state','=','done')]}" domain="[('partner_id','=',partner_id)]"/>
+                                <!--<field name="bank_num" attrs="{'invisible':[('type','!=','collection')],'readonly':True}"/>-->
+                                <!--<field name="bank_num_2" attrs="{'invisible':[('type','!=','payment')],'readonly':True}"/>-->
+                            </group>
+                        </group>
+                        <field name="line">
+                            <tree editable="bottom">
+                                <field name="product_num"/>
+                                <field name="product_name"/>
+                                <field name="money" sum="合计"/>
+                            </tree>
+                        </field>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="tree_qdodoo_car_payment_order" model="ir.ui.view">
+            <field name="name">qdodoo.car.payment.order.tree</field>
+            <field name="model">qdodoo.car.payment.order</field>
+            <field name="arch" type="xml">
+                <tree string="收款通知">
+                    <field name="name"/>
+                    <field name="partner_id" string="客户"/>
+                    <field name="contract_id"/>
+                    <field name="pay_project"/>
+                    <field name="date_done"/>
+                    <field name="all_money"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+        <record id="tree_qdodoo_car_payment_order2" model="ir.ui.view">
+            <field name="name">qdodoo.car.payment.order.tree2</field>
+            <field name="model">qdodoo.car.payment.order</field>
+            <field name="arch" type="xml">
+                <tree string="付款申请">
+                    <field name="name"/>
+                    <field name="partner_id" string="客户"/>
+                    <field name="contract_id"/>
+                    <field name="pay_project"/>
+                    <field name="date_done"/>
+                    <field name="all_money"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+        <record id="action_qdodoo_car_payment_order" model="ir.actions.act_window">
+            <field name="name">收款通知</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">qdodoo.car.payment.order</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('type','=','collection')]</field>
+            <field name="context">{'type':'collection'}</field>
+            <field name="view_id" ref="tree_qdodoo_car_payment_order"/>
+        </record>
+        <menuitem name="收款通知" action="action_qdodoo_car_payment_order" id="menu_qdodoo_car_payment_order" parent="menu_qdodoo_payment_manager" sequence="1"/>
+
+        <record id="action_qdodoo_car_payment_order_2" model="ir.actions.act_window">
+            <field name="name">付款申请</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">qdodoo.car.payment.order</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('type','=','payment')]</field>
+            <field name="context">{'type':'payment'}</field>
+            <field name="view_id" ref="tree_qdodoo_car_payment_order2"/>
+        </record>
+        <menuitem name="付款申请" action="action_qdodoo_car_payment_order_2" id="menu_qdodoo_car_payment_order_2" parent="menu_qdodoo_payment_manager" sequence="2"/>
+
+    </data>
+</openerp>

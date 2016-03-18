@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="form_qdodoo_car_purchase_bill_line" model="ir.ui.view">
+            <field name="name">qdodoo.car.purchase.bill.line.form</field>
+            <field name="model">qdodoo.car.purchase.bill.line</field>
+            <field name="arch" type="xml">
+                <form string="车辆明细选择">
+                    <label string="车辆明细选择"/>
+                    <field name="order_id" invisible="True"/>
+                    <field name="line" domain="[('purchase_id','=',order_id),('bill_id','=',False)]">
+                        <tree>
+                            <field name="product_id"/>
+                            <field name="product_num"/>
+                            <field name="issuing_money"/>
+                        </tree>
+                    </field>
+                    <footer>
+                        <button name="btn_create_bill" string="创建提单" type="object" context="{'create':True}" class="oe_highlight"/> 或
+                        <button name="btn_create_bill" string="查看提单" type="object" context="{'create':False}" class="oe_highlight"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="action_qdodoo_car_purchase_bill_line" model="ir.actions.act_window">
+            <field name="name">提单明细选择</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">qdodoo.car.purchase.bill.line</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="view_id" ref="form_qdodoo_car_purchase_bill_line"/>
+        </record>
+
+        <record id="form_qdodoo_car_purchase_contract" model="ir.ui.view">
+            <field name="name">qdodoo.car.purchase.contract.form</field>
+            <field name="model">qdodoo.car.purchase.contract</field>
+            <field name="arch" type="xml">
+                <form string="外贸合同">
+                    <header>
+                        <button name="btn_doing" string="确认" type="object" states="draft" class="oe_highlight"/>
+                        <button name="btn_cancel" string="取消" type="object" states="draft" class="oe_highlight"/>
+                        <button name="btn_issuing" string="开证" type="object" states="doing" class="oe_highlight"/>
+                        <button name="btn_tt" string="TT" type="object" states="doing" class="oe_highlight"/>
+                        <button name="%(action_qdodoo_car_purchase_bill_line)d" string="提单" type="action" states="doing" class="oe_highlight"/>
+                        <button name="btn_negotiation" string="押汇" type="object" states="doing" class="oe_highlight"/>
+                        <button name="btn_pad_tax" string="垫税" type="object" states="doing" class="oe_highlight"/>
+                        <button name="btn_expense_in" string="费用录入" type="object" states="doing" class="oe_highlight"/>
+                        <button name="btn_settlement" string="结算" type="object" states="doing" class="oe_highlight"/>
+                        <button name="btn_unusual" string="异常" type="object" states="doing" class="oe_highlight"/>
+                        <button name="btn_perform" string="恢复执行" type="object" states="unusual" class="oe_highlight"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,doing,done" statusbar_colors='{"exception":"red","cancel":"red"}'/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <label string="外贸合同"/>
+                                <field name="name" class="oe_inline" readonly="1"/>
+                            </h1>
+                        </div>
+                        <div class="oe_right oe_button_box" name="buttons">
+                            <button name="btn_car_information" icon="gtk-execute" string="车辆档案" type="object"/>
+                            <button name="btn_expense_in_line" icon="gtk-execute" string="查看费用" type="object"/>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="contract_id" attrs="{'readonly':[('state','!=','draft')]}"/>
+                                <field name="customer_id" readonly="True"/>
+                                <field name="partner_id" domain="[('supplier','=',True)]" attrs="{'readonly':[('state','!=','draft')]}"/>
+                                <field name="contract_num" attrs="{'readonly':[('state','!=','draft')]}"/>
+                                <field name="currency_id" attrs="{'readonly':[('state','!=','draft')]}"/>
+                                <field name="payment_type" attrs="{'readonly':[('state','!=','draft')]}"/>
+                            </group>
+                            <group>
+                                <field name="date_order" attrs="{'readonly':[('state','!=','draft')]}"/>
+                                <field name="out_port" attrs="{'readonly':[('state','!=','draft')]}"/>
+                                <field name="in_port" attrs="{'readonly':[('state','!=','draft')]}"/>
+                                <field name="pack_type" attrs="{'readonly':[('state','!=','draft')]}"/>
+                                <field name="price_term" attrs="{'readonly':[('state','!=','draft')]}"/>
+                                <field name="date_ship" attrs="{'readonly':[('state','!=','draft')]}"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="车辆明细">
+                                <field name="order_line" attrs="{'readonly':[('state','!=','draft')]}">
+                                    <tree editable="bottom">
+                                        <field name="product_id"/>
+                                        <field name="sale_line" invisible="True"/>
+                                        <field name="product_qty"/>
+                                        <field name="price_unit"/>
+                                        <field name="all_money" sum="合计"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="合同执行状态">
+                                <group>
+                                    <group>
+                                        <field name="is_issuing" readonly="True"/>
+                                        <field name="is_negotiation" readonly="True"/>
+                                        <field name="is_bill" readonly="True"/>
+                                    </group>
+                                    <group>
+                                        <field name="is_tax" readonly="True"/>
+                                        <field name="is_negotiation_end" readonly="True"/>
+                                        <field name="is_settlement" readonly="True"/>
+                                    </group>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="tree_qdodoo_car_purchase_contract" model="ir.ui.view">
+            <field name="name">qdodoo.car.purchase.contract.tree</field>
+            <field name="model">qdodoo.car.purchase.contract</field>
+            <field name="arch" type="xml">
+                <tree string="外贸合同">
+                    <field name="contract_num"/>
+                    <field name="date_order"/>
+                    <field name="partner_id"/>
+                    <field name="contract_id"/>
+                    <field name="date_ship"/>
+                    <field name="car_number"/>
+                    <field name="amount_total"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+        <record id="action_qdodoo_car_purchase_contract" model="ir.actions.act_window">
+            <field name="name">外贸合同</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">qdodoo.car.purchase.contract</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="tree_qdodoo_car_purchase_contract"/>
+        </record>
+        <menuitem name="外贸合同" action="action_qdodoo_car_purchase_contract" id="menu_qdodoo_car_purchase_contract" parent="menu_qdodoo_contract_manager" sequence="2"/>
+
+    </data>
+</openerp>

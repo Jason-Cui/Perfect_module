@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="form_qdodoo_car_negotiation_manager" model="ir.ui.view">
+            <field name="name">qdodoo.car.negotiation.manager.form</field>
+            <field name="model">qdodoo.car.negotiation.manager</field>
+            <field name="arch" type="xml">
+                <form string="押汇申请">
+                    <header>
+                        <button name="btn_doing" string="确认" type="object" states="draft" class="oe_highlight"/>
+                        <button name="btn_cancel" string="取消" type="object" states="draft" class="oe_highlight"/>
+                        <button name="btn_done" string="结汇" type="object" states="doing" class="oe_highlight"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,doing,done" statusbar_colors='{"exception":"red","cancel":"red"}'/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <label string="押汇登记"/>
+                                <field name="name" class="oe_inline" readonly="1"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="purchase_id" readonly="True"/>
+                                <field name="bill_id" domain="[('purchase_id','=',purchase_id)]" attrs="{'required':True,'readonly':[('state','!=','draft')]}"/>
+                                <field name="issuing_type" readonly="True"/>
+                            </group>
+                            <group>
+                                <field name="negotiation_date" attrs="{'required':[('state','!=','draft')]}"/>
+                                <field name="negotiation_rate" attrs="{'required':[('state','!=','draft')]}"/>
+                            </group>
+                        </group>
+                        <label string="车辆明细"/>
+                        <field name="order_line" attrs="{'readonly':[('state','=','done')]}">
+                            <tree editable="bottom" create="false">
+                                <field name="product_id" readonly="True"/>
+                                <field name="product_num" readonly="True"/>
+                                <field name="currency_id" readonly="True"/>
+                                <field name="negotiation_money" readonly="True"/>
+                                <field name="negotiation_exchange_rate"/>
+                                <field name="negotiation_end_date"/>
+                                <field name="negotiation_interest" readonly="True"/>
+                            </tree>
+                        </field>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="tree_qdodoo_car_negotiation_manager" model="ir.ui.view">
+            <field name="name">qdodoo.car.negotiation.manager.tree</field>
+            <field name="model">qdodoo.car.negotiation.manager</field>
+            <field name="arch" type="xml">
+                <tree string="押汇申请">
+                    <field name="purchase_id"/>
+                    <field name="bill_id"/>
+                    <field name="negotiation_date"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+        <record id="action_qdodoo_car_negotiation_manager" model="ir.actions.act_window">
+            <field name="name">押汇登记</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">qdodoo.car.negotiation.manager</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="tree_qdodoo_car_negotiation_manager"/>
+        </record>
+        <menuitem name="押汇" action="action_qdodoo_car_negotiation_manager" id="menu_qdodoo_car_negotiation_manager" parent="menu_qdodoo_credit_manager" sequence="2"/>
+
+        <record id="form_qdodoo_car_negotiation_manager_sale" model="ir.ui.view">
+            <field name="name">qdodoo.car.negotiation.manager.sale.form</field>
+            <field name="model">qdodoo.car.negotiation.manager.sale</field>
+            <field name="arch" type="xml">
+                <form string="押汇登记">
+                    <header>
+                        <button name="btn_doing" string="确认" type="object" states="draft" class="oe_highlight"/>
+                        <button name="btn_cancel" string="取消" type="object" states="draft" class="oe_highlight"/>
+                        <button name="btn_done" string="结汇" type="object" states="doing" class="oe_highlight"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,doing,done" statusbar_colors='{"exception":"red","cancel":"red"}'/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <label string="押汇协议"/>
+                                <field name="name" class="oe_inline" readonly="1"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="purchase_id" attrs="{'required':True,'readonly':[('state','!=','draft')]}" domain="[('is_issuing','=',True),('is_negotiation','=',False)]"/>
+                                <field name="bill_id" attrs="{'required':True,'readonly':[('state','!=','draft')]}" domain="[('purchase_id','=',purchase_id)]"/>
+                            </group>
+                            <group>
+                                <field name="negotiation_name"/>
+                                <field name="file_name" invisible="True"/>
+                                <field name="negotiation_file" filename="file_name" attrs="{'readonly':[('state','!=','draft')]}"/>
+                                <field name="negotiation_rate" readonly="True"/>
+                            </group>
+                        </group>
+                        <field name="order_line" attrs="{'readonly':[('state','=','done')]}">
+                            <tree editable="bottom" create="false">
+                                <field name="product_id" readonly="True"/>
+                                <field name="product_num" readonly="True"/>
+                                <field name="currency_id" readonly="True"/>
+                                <field name="negotiation_money" readonly="True"/>
+                                <field name="negotiation_sale_exchange_rate"/>
+                                <field name="negotiation_date" readonly="True"/>
+                                <field name="negotiation_end_date" readonly="True"/>
+                                <field name="negotiation_sale_interest"/>
+                            </tree>
+                        </field>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="tree_qdodoo_car_negotiation_manager_sale" model="ir.ui.view">
+            <field name="name">qdodoo.car.negotiation.manager.sale.tree</field>
+            <field name="model">qdodoo.car.negotiation.manager.sale</field>
+            <field name="arch" type="xml">
+                <tree string="押汇登记">
+                    <field name="negotiation_name"/>
+                    <field name="purchase_id"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+        <record id="action_qdodoo_car_negotiation_manager_sale" model="ir.actions.act_window">
+            <field name="name">押汇登记</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">qdodoo.car.negotiation.manager.sale</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="tree_qdodoo_car_negotiation_manager_sale"/>
+        </record>
+        <menuitem name="押汇" action="action_qdodoo_car_negotiation_manager_sale" id="menu_qdodoo_car_negotiation_manager_sale" parent="menu_qdodoo_sale_manager" sequence="2"/>
+
+    </data>
+</openerp>

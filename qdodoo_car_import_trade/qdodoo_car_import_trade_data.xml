@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="0">
+
+        <record id="qdodoo_car_expense_1" model="qdodoo.car.expense">
+            <field name="name">保证金</field>
+            <field name="car_name">保证金</field>
+            <field name="bill_name">保证金</field>
+            <field name="expense_type">receivable</field>
+        </record>
+        <record id="qdodoo_car_expense_2" model="qdodoo.car.expense">
+            <field name="name">二次保证金</field>
+            <field name="car_name">二次保证金</field>
+            <field name="bill_name">二次保证金</field>
+            <field name="expense_type">receivable</field>
+        </record>
+        <record id="qdodoo_car_expense_3" model="qdodoo.car.expense">
+            <field name="name">提车款</field>
+            <field name="car_name">提车款</field>
+            <field name="bill_name">提车款</field>
+            <field name="expense_type">old_receivable</field>
+        </record>
+        <record id="qdodoo_car_expense_4" model="qdodoo.car.expense">
+            <field name="name">购车款</field>
+            <field name="car_name">购车款</field>
+            <field name="bill_name">购车款</field>
+            <field name="expense_type">payable</field>
+        </record>
+        <record id="qdodoo_car_expense_5" model="qdodoo.car.expense">
+            <field name="name">开证保证金</field>
+            <field name="car_name">开证保证金</field>
+            <field name="bill_name">开证保证金</field>
+            <field name="expense_type">payable</field>
+        </record>
+
+        <record id="qdodoo_stock_location_qd" model="stock.location">
+            <field name="name">青岛</field>
+            <field name="location_id" ref="stock.stock_location_stock"/>
+            <field name="usage">internal</field>
+            <field name="company_id"></field>
+        </record>
+
+        <record id="qdodoo_stock_location_qdcx" model="stock.location">
+            <field name="name">青岛拆箱</field>
+            <field name="location_id">11</field>
+            <field name="usage">internal</field>
+            <field name="company_id"></field>
+        </record>
+
+        <record id="qdodoo_stock_location_qddg" model="stock.location">
+            <field name="name">青岛到港</field>
+            <field name="location_id">11</field>
+            <field name="usage">internal</field>
+            <field name="company_id"></field>
+        </record>
+
+
+    </data>
+</openerp>

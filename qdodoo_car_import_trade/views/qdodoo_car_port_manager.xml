@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="tree_qdodoo_car_port_manager" model="ir.ui.view">
+            <field name="name">qdodoo.car.port.manager.tree</field>
+            <field name="model">qdodoo.car.port.manager</field>
+            <field name="arch" type="xml">
+                <tree string="港口管理" editable="bottom">
+                    <field name="name"/>
+                    <field name="type"/>
+                    <field name="country_id"/>
+                </tree>
+            </field>
+        </record>
+        <record id="action_qdodoo_car_port_manager" model="ir.actions.act_window">
+            <field name="name">港口管理</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">qdodoo.car.port.manager</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="tree_qdodoo_car_port_manager"/>
+        </record>
+        <menuitem name="港口管理" action="action_qdodoo_car_port_manager" id="menu_qdodoo_car_port_manager" parent="menu_qdodoo_information_manager" sequence="2"/>
+
+        <record id="tree_qdodoo_car_expense" model="ir.ui.view">
+            <field name="name">qdodoo.car.expense.tree</field>
+            <field name="model">qdodoo.car.expense</field>
+            <field name="arch" type="xml">
+                <tree string="费用项管理" editable="bottom">
+                    <field name="name"/>
+                    <field name="car_name"/>
+                    <field name="bill_name"/>
+                    <field name="expense_type"/>
+                </tree>
+            </field>
+        </record>
+        <record id="action_qdodoo_car_expense" model="ir.actions.act_window">
+            <field name="name">费用项管理</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">qdodoo.car.expense</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="tree_qdodoo_car_expense"/>
+        </record>
+        <menuitem name="费用项管理" action="action_qdodoo_car_expense" id="menu_qdodoo_car_expense" parent="menu_qdodoo_information_manager" sequence="3"/>
+
+    </data>
+</openerp>

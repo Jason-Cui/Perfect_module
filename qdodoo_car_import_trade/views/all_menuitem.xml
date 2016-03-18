@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <menuitem name="汽车贸易" id="menu_qdodoo_car_import_trade" sequence="60"/>
+
+        <menuitem name="合同管理" id="menu_qdodoo_contract_manager" parent="menu_qdodoo_car_import_trade" sequence="1"/>
+        <menuitem name="采购支付管理" id="menu_qdodoo_credit_manager" parent="menu_qdodoo_car_import_trade" sequence="2"/>
+        <menuitem name="物流信息管理" id="menu_qdodoo_logistics_manager" parent="menu_qdodoo_car_import_trade" sequence="3"/>
+        <menuitem name="出入库管理" id="menu_qdodoo_stock_manager" parent="menu_qdodoo_car_import_trade" sequence="4"/>
+        <menuitem name="销售管理" id="menu_qdodoo_sale_manager" parent="menu_qdodoo_car_import_trade" sequence="5"/>
+        <menuitem name="收付款管理" id="menu_qdodoo_payment_manager" parent="menu_qdodoo_car_import_trade" sequence="6"/>
+        <menuitem name="查询中心" id="menu_qdodoo_select_manager" parent="menu_qdodoo_car_import_trade" sequence="7"/>
+        <menuitem name="数据中心" id="menu_qdodoo_information_manager" parent="menu_qdodoo_car_import_trade" sequence="8"/>
+
+    </data>
+</openerp>
