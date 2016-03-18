@@ -74,7 +74,7 @@ class qdodoo_car_carry_money(models.Model):
             for line in self.order_line:
                 if not line.estimate_money:
                     raise osv.except_osv(_(u'警告'),_(u'请输入预估车款估值！'))
-                line_obj.create({'order_id':payment_id.id,'product_num':line.product_num.id,'money':line.subtitle})
+                line_obj.create({'order_id':payment_id.id,'product_num':line.product_num.id,'money':line.estimate_money})
         result = self.env['ir.model.data'].get_object_reference( 'qdodoo_car_import_trade', 'tree_qdodoo_car_payment_order')
         view_id = result and result[1] or False
         result_form = self.env['ir.model.data'].get_object_reference('qdodoo_car_import_trade', 'form_qdodoo_car_payment_order')
@@ -117,7 +117,7 @@ class qdodoo_car_carry_money_line(models.Model):
     delayed_moeny = fields.Float(u'滞报金', related="product_num.delayed_moeny")
     in_issuing_money = fields.Float(u'海关保证金', related="product_num.in_issuing_money")
     subtitle = fields.Float(u'合计', compute="_get_subtitle")
-    estimate_money = fields.Float(u'预估车款估值')
+    estimate_money = fields.Float(u'实收提车款')
 
     def _get_subtitle(self):
         for ids in self:

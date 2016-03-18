@@ -75,6 +75,9 @@ class qdodoo_car_payment_order(models.Model):
             if self.issuing_id:
                 for line in self.line:
                     line.product_num.write({'invoice_issuing_money':line.money})
+            if self.carry_id:
+                for line in self.line:
+                    line.product_num.write({'carry_money':line.money})
         return super(qdodoo_car_payment_order, self).write(vals)
 
     @api.model

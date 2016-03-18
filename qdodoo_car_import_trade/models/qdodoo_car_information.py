@@ -32,7 +32,7 @@ class qdodoo_car_information(models.Model):
     price_unit = fields.Float(u'销售合同价格')
     tax_money = fields.Float(u'销售合同税费')
     pledge_money = fields.Float(u'销售合同保证金')
-    all_car_money = fields.Float(u'预收款')
+    all_car_money = fields.Float(u'预收款',compute="_get_all_car_money")
     agent_money = fields.Float(u'代理费')
     purchase_id = fields.Many2one('qdodoo.car.purchase.contract',u'外贸合同号')
     negotiation_id = fields.Many2one('qdodoo.car.negotiation.manager',u'押汇协议号')
@@ -46,7 +46,6 @@ class qdodoo_car_information(models.Model):
     negotiation_interest = fields.Float(u'押汇利息(银行)')
     issuing_type = fields.Selection([('near',u'即期'),('long',u'90天远期')],u'信用证类型')
     bill_id = fields.Many2one('qdodoo.car.bill.lading',u'提单号')
-    buy_exchange_rate = fields.Float(u'购汇汇率')
     sale_price = fields.Float(u'进口裸车价', compute='_get_sale_price')
     inspection_price = fields.Float(u'监装费')
     in_tax = fields.Float(u'进口关税')
@@ -95,6 +94,7 @@ class qdodoo_car_information(models.Model):
     pad_interest = fields.Float(u'垫税利息')
     margin_id = fields.Many2one('qdodoo.car.margin.money',u'二次保证金')
     carry_id = fields.Many2one('qdodoo.car.carry.money',u'提车款')
+    carry_money = fields.Float(u'提车款金额')
     margin_money = fields.Float(u'二次保证金金额')
     negotiation_sale_id = fields.Many2one('qdodoo.car.negotiation.manager.sale',u'客户押汇协议号')
     negotiation_sale_exchange_rate = fields.Float(u'押汇汇率(客户)')
@@ -112,6 +112,12 @@ class qdodoo_car_information(models.Model):
     negotiation_over = fields.Boolean(u'结汇完成')
     dalay_date = fields.Float(u'延期天数', default='90')
     dalay_rate = fields.Float(u'延期利率(%)外币', default='4.5')
+    real_price = fields.Float(u'实际车价')
+
+    # 预收款（保证金、二次保证金、提车款）
+    def _get_all_car_money(self):
+        for ids in self:
+            ids.all_car_money = ids.pledge_money + ids.margin_money + ids.carry_money
 
     # 获取进口裸车价
     def _get_sale_price(self):

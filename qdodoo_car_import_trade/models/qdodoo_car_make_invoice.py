@@ -41,6 +41,7 @@ class qdodoo_car_make_invoice(models.Model):
     all_money = fields.Float(u'开票金额',compute="_get_all_money")
     car_number = fields.Float(u'车辆数',compute="_get_all_money")
 
+    # 开票金额
     def _get_all_money(self):
         for ids in self:
             ids.all_money = 0

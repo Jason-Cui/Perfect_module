@@ -40,6 +40,13 @@
             <field name="company_id"></field>
         </record>
 
+        <record id="qdodoo_stock_location_tj" model="stock.location">
+            <field name="name">天津</field>
+            <field name="location_id" ref="stock.stock_location_stock"/>
+            <field name="usage">internal</field>
+            <field name="company_id"></field>
+        </record>
+
         <record id="qdodoo_stock_location_qdcx" model="stock.location">
             <field name="name">青岛拆箱</field>
             <field name="location_id">11</field>
@@ -47,8 +54,22 @@
             <field name="company_id"></field>
         </record>
 
+        <record id="qdodoo_stock_location_tjcx" model="stock.location">
+            <field name="name">天津拆箱</field>
+            <field name="location_id">11</field>
+            <field name="usage">internal</field>
+            <field name="company_id"></field>
+        </record>
+
         <record id="qdodoo_stock_location_qddg" model="stock.location">
             <field name="name">青岛到港</field>
+            <field name="location_id">11</field>
+            <field name="usage">internal</field>
+            <field name="company_id"></field>
+        </record>
+
+        <record id="qdodoo_stock_location_tjdg" model="stock.location">
+            <field name="name">天津到港</field>
             <field name="location_id">11</field>
             <field name="usage">internal</field>
             <field name="company_id"></field>
